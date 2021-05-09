@@ -1,0 +1,13 @@
+<mat-dialog-actions>
+  <span *ngFor="let page of pages; index as i">
+    <button
+      mat-dialog-close
+      mat-button
+      color="accent"
+      routerLink="/{{ page.toLowerCase() }}"
+    >
+      {{ page }}
+    </button>
+    <br *ngIf="" />
+  </span>
+</mat-dialog-actions>

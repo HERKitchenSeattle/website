@@ -1,0 +1,24 @@
+main {
+  margin-left: 400px;
+  margin-right: 400px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+@media only screen and (max-width: 1200px) {
+  main {
+    margin: 5px 20px 5px 20px;
+  }
+}
+@import '../../variables';
+.example-card {
+  max-width: 400px;
+}
+
+mat-card {
+  margin-bottom: 10px;
+  max-width: 400px;
+}
+img {
+  width: calc(100% + 32px);
+  margin: 0 -16px 16px -16px;
+}

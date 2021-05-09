@@ -1,0 +1,166 @@
+<mat-spinner color="accent" class="spinner" *ngIf="loading"></mat-spinner>
+<script>
+  function jsCloseDialog(index) {
+    document.getElementById('item-' + index).classList.toggle('hidden');
+  }
+</script>
+<main class="main">
+  <h1>Menu</h1>
+  <h2 class="mat-warn">Minimum order of 6 per product.</h2>
+  <mat-accordion>
+    <mat-expansion-panel
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title>Cookies</mat-panel-title>
+      </mat-expansion-panel-header>
+      <a (click)="scroll('classic-cookie')" mat-list-item>Classic</a>
+      <a (click)="scroll('shortbread-cookie')" mat-list-item>Shortbread</a>
+    </mat-expansion-panel>
+    <mat-expansion-panel
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title>Bars</mat-panel-title>
+      </mat-expansion-panel-header>
+      <a (click)="scroll('dessert-bars')" mat-list-item>Dessert</a>
+      <a (click)="scroll('oat-bars')" mat-list-item>Oat</a>
+      <a (click)="scroll('keto-bars')" mat-list-item>Keto</a>
+    </mat-expansion-panel>
+    <mat-expansion-panel
+      (opened)="panelOpenState = true"
+      (closed)="panelOpenState = false"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title>Misc.</mat-panel-title>
+      </mat-expansion-panel-header>
+      <a (click)="scroll('classic-cookie')" mat-list-item>Muffins</a>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <br />
+  <!-- Sections:
+  classic cookies, 
+shortbread cookies,
+
+dessert bars
+oat bars
+keto bars
+
+muffins
+  -->
+  <!-- Classic cookies: -->
+  <div class="item-header" id="classic-cookie">
+    <h2>Classic Cookies</h2>
+    <h3>
+      Introducing HER Classic Cookies.These new additions were created from
+      months of testing, hundreds of cookies, dozens of recipes and a group of
+      master tasters on board to taste new cookie flavors. It’s truly a labor of
+      love.
+    </h3>
+    <mat-divider></mat-divider>
+  </div>
+  <section class="menu-grid classic-cookie-grid" *ngIf="!loading">
+    <div
+      *ngFor="let cookie of classicCookies; index as i"
+      class="menu-card"
+      id="{{
+        cookie.name.toLowerCase().replace(' ', '-').replace('\'', '')
+      }}-card"
+    >
+      <mat-card class="material-menu-card">
+        <mat-card-header>
+          <mat-card-title>
+            {{ cookie.name }}
+          </mat-card-title>
+        </mat-card-header>
+        <a
+          href="assets/images/classicCookies/original-size/{{
+            cookie.fileName
+          }}.jpg"
+          target="_blank"
+        >
+          <img
+            loading="lazy"
+            src="/assets/images/classicCookies/{{ cookie.fileName }}.jpg"
+            alt="{{ cookie.name }}"
+            id="cookie {{
+              cookie.name.toLowerCase().replace(' ', '-').replace('\'', '')
+            }}-cookie"
+            class="menu-image"
+            height="200px"
+          />
+        </a>
+
+        <mat-card-content>
+          <p *ngIf="cookie.desc">{{ cookie.desc }}</p>
+
+          <p>{{ cookie.price }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </section>
+  <div class="item-header" id="shortbread-cookie">
+    <h2>Shortbread Cookies</h2>
+    <h3>
+      HER Kitchen’s original cookie recipe. Short bread cookies flavored with
+      superfood ingredients in a little dome shaped cookie.
+    </h3>
+    <mat-divider></mat-divider>
+  </div>
+
+  <section class="menu-grid shortbread-cookie-grid" *ngIf="!loading">
+    <div
+      *ngFor="let cookie of shortbreadCookies; index as i"
+      class="menu-card"
+      id="{{
+        cookie.name.toLowerCase().replace(' ', '-').replace('\'', '')
+      }}-card"
+    >
+      <mat-card class="material-menu-card">
+        <mat-card-header>
+          <mat-card-title>
+            {{ cookie.name }}
+          </mat-card-title>
+        </mat-card-header>
+        <img
+          loading="lazy"
+          src="/assets/images/shortbreadCookies/{{ cookie.fileName }}.jpg"
+          alt="{{ cookie.name }}"
+          class="lazyload menu-image"
+          height="200px"
+        />
+        <mat-card-content>
+          <p *ngIf="cookie.desc">{{ cookie.desc }}</p>
+          <p>{{ cookie.price }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </section>
+  <div class="item-header" id="keto-bars">
+    <h2>Keto Bars</h2>
+    <!-- <h3></h3> -->
+    <mat-divider></mat-divider>
+  </div>
+
+  <section class="menu-grid keto-bar-grid" *ngIf="!loading">
+    <div class="menu-card" id="keto-bar-card">
+      <mat-card class="material-menu-card" style="width: 200px">
+        <mat-card-header>
+          <mat-card-title> Keto Bar </mat-card-title>
+        </mat-card-header>
+        <img
+          loading="lazy"
+          src="/assets/images/otherProducts/Keto Bar.jpg"
+          alt="Keto Bar"
+          class="menu-image"
+        />
+        <mat-card-content>
+          <p>A keto nut bar</p>
+          <p></p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </section>
+</main>

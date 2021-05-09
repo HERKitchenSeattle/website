@@ -1,0 +1,28 @@
+main {
+  margin-left: 400px;
+  margin-right: 400px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+@media only screen and (max-width: 1200px) {
+  main {
+    margin: 5px 20px 5px 20px;
+  }
+}
+@import '../../../variables';
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+td {
+  padding-right: 8px;
+}
+mat-datepicker-toggle {
+  color: #fff !important;
+}

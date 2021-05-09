@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "herkitchenseattle": {
+      "hosting": {
+        "HERKitchen": [
+          "herkitchenseattle"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "herkitchenseattle"
+  }
+}

@@ -1,0 +1,63 @@
+footer {
+  // background-color: #fbc02d;
+  // width: 100%;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  height: fit-content;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  background: #ffeb3b;
+  width: 100%;
+  color: #200f09;
+  // margin-top: 25px;
+}
+.back-to-top-btn {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 60px;
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 25px;
+  margin-top: 25px;
+  background: #ffeb3b;
+}
+.other-footer {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  text-align: center;
+  justify-content: center;
+  margin-top: 25px;
+}
+.navFooterBackToTop {
+  margin-bottom: 40px;
+  background: #ffeb3b;
+}
+#navFooter .navFooterBackToTop span {
+  display: block;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 13px;
+}
+.fb {
+  margin-right: 5px;
+}
+.insta {
+  margin-left: 5px;
+}
+.topLink {
+  cursor: pointer;
+}
+h4.links > a {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.github-logo {
+  content: url('../../assets/github.svg');
+}
+i {
+  height: 1em;
+}

@@ -1,0 +1,68 @@
+main {
+  margin-left: 400px;
+  margin-right: 400px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: center;
+}
+@media only screen and (max-width: 1200px) {
+  main {
+    margin: 5px 20px 5px 20px;
+  }
+}
+@import '../../../variables';
+
+button {
+  margin: 25px;
+}
+.example-container .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+.example-right-align {
+  text-align: right;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.example-right-align {
+  -moz-appearance: textfield;
+}
+.example-card {
+  max-width: fit-content;
+}
+tr {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 0px;
+  overflow: hidden;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+mat-card {
+  background: #424242 !important;
+  color: #fff !important;
+}
+button {
+  margin: 10px;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s;
+  -webkit-text-fill-color: #fff !important;
+}
+.passwordButton {
+  padding: 0;
+  $margin: 3px;
+  margin-top: $margin;
+  margin-bottom: $margin;
+}

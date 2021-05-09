@@ -1,0 +1,8 @@
+<h2 matDialogTitle>Are you sure?</h2>
+<div mat-dialog-content>This action is irreversible.</div>
+<div mat-dialog-actions>
+  <button mat-flat-button color="accent" mat-dialog-close>Close</button>
+  <button mat-button mat-dialog-close (click)="actuallyDeleteTheEvent()">
+    Delete
+  </button>
+</div>

@@ -1,0 +1,25 @@
+main {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+}
+button[mat-fab] {
+  width: 70px !important;
+  height: 70px !important;
+}
+.icon-question {
+  font-size: 28px;
+}
+@media only screen and (max-width: 426px) {
+  main {
+    bottom: 20px !important;
+    right: 20px !important;
+  }
+  button[mat-fab] {
+    width: 60px !important;
+    height: 60px !important;
+  }
+  .icon-question {
+    font-size: 24px;
+  }
+}

@@ -1,0 +1,72 @@
+/* You can add global styles to this file, and also import other style files */
+@import './assets/tailwind.min.css';
+@import '@angular/material/prebuilt-themes/purple-green.css';
+
+@import './variables';
+
+@include mat-core();
+$primary: mat-palette($mat-yellow, 500);
+$accent: mat-palette($mat-pink, 500);
+
+.material-icons.md-dark {
+  color: #000;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+body {
+  color: #fff;
+}
+a {
+  color: mat-color($accent);
+  text-decoration: none;
+  &:hover {
+    color: mat-color($accent);
+    text-decoration: underline;
+  }
+}
+.mat-list-item-content {
+  margin-bottom: 5px;
+}
+.mat-card-header .mat-card-title {
+  margin-top: 10px;
+}
+.mat-card > :last-child:not(.mat-card-footer),
+.mat-card-content > :last-child:not(.mat-card-footer) {
+  margin: 10px;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s;
+  -webkit-text-fill-color: #fff !important;
+}
+.mat-card {
+  background: #424242 !important;
+  color: #fff !important;
+}
+
+.mat-card-subtitle {
+  color: hsla(0, 0%, 100%, 0.7) !important;
+}
+.mat-divider {
+  border-top-color: hsla(0, 0%, 100%, 0.12) !important;
+}
+.mat-option {
+  color: #fff !important;
+}
+.mat-flat-button.mat-accent,
+.mat-raised-button.mat-accent,
+.mat-fab.mat-accent,
+.mat-mini-fab.mat-accent {
+  color: rgba(0, 0, 0, 0.87) !important;
+}
+.mat-warn {
+  color: $warn;
+}

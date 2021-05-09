@@ -1,0 +1,10 @@
+# google bot searching
+User-agent: Googlebot
+Allow: /
+
+# everything
+
+User-agent: *
+Allow: /
+
+Sitemap: https://herkitchenseattle.web.app/sitemap.xml

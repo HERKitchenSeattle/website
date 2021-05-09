@@ -1,0 +1,145 @@
+mat-toolbar {
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+}
+a.navbar-brand {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+.navbar-link {
+  // font-weight: bold;
+  font-weight: 500;
+  // text-transform: uppercase;
+  text-decoration: none;
+  color: #211f09;
+  margin-left: 16px;
+  margin-right: 16px;
+  opacity: 0.8;
+  line-height: 36px;
+  font-size: 16px;
+  transition: all 0.3s;
+  border-bottom: 2px solid transparent;
+  $nav-padding: 5px;
+  padding-bottom: $nav-padding;
+  padding-top: $nav-padding;
+
+  &:hover,
+  &:active,
+  &:focus {
+    border-bottom-color: #211f09;
+    opacity: 1;
+  }
+}
+
+.nav-link-active {
+  opacity: 1;
+  border-bottom: 2px solid #211f09;
+}
+
+.left-align {
+  justify-content: left;
+}
+.brand-row {
+  justify-content: center;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+.home-logo {
+  text-align: center;
+}
+.navbar-left-container {
+  display: flex;
+  align-items: center;
+  -webkit-box-flex: 1;
+  flex: 1 0 33%;
+}
+.navbar-middle-container {
+  display: flex;
+  align-items: center;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-flex: 1;
+  flex: 1 0 33%;
+  justify-content: center;
+}
+.navbar-right-container {
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-box-pack: end;
+  justify-content: flex-end;
+  flex: 1 0 33%;
+  align-items: center;
+  -webkit-box-flex: 1;
+}
+.dark-mode-button {
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+.home-logo {
+  align-items: center;
+  justify-content: center;
+}
+.mat-button-wrapper {
+  display: flex;
+  align-items: center;
+}
+.dark-checkbox {
+  display: none;
+  align-items: center;
+  align-content: center;
+}
+.fb-logo {
+  content: url('../../assets/facebook.svg');
+  height: 2.5em;
+}
+.insta-logo {
+  content: url('../../assets/insta.svg');
+  height: 2.55em;
+}
+@media only screen and (max-width: 1444px) {
+  .right-icons {
+    display: none;
+  }
+  .right-dropdown {
+    display: flex;
+  }
+}
+@media only screen and (min-width: 1445px) {
+  .right-icons {
+    display: flex;
+  }
+  .right-dropdown {
+    display: none;
+  }
+}
+
+mat-drawer-content {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.pages-sidebar {
+  width: 400px;
+  height: 200px;
+  margin: 12px;
+}
+@media only screen and (min-width: 1135px) {
+  .sidenav-toggle {
+    display: none;
+  }
+  .mat-drawer-backdrop.mat-drawer-shown {
+    background-color: none;
+  }
+}
+@media only screen and (max-width: 1134px) {
+  .page-links {
+    display: none;
+  }
+}
+.profile-button {
+  font-size: 36px;
+}

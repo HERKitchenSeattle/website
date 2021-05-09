@@ -1,0 +1,115 @@
+<main>
+  <h1>Dashboard</h1>
+  <button mat-flat-button color="accent" (click)="signOut()">Sign Out</button>
+  <h2>Create new event</h2>
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Event name</mat-label>
+      <input matInput class="name-form" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Description</mat-label>
+      <input matInput class="description-form" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Location</mat-label>
+      <input matInput class="location-form" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Full address</mat-label>
+      <input matInput class="address-form" />
+    </mat-form-field>
+    <table>
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Start date</mat-label>
+            <input
+              class="start-date-form"
+              matInput
+              [matDatepicker]="startPicker"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="startPicker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #startPicker></mat-datepicker>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>End date</mat-label>
+            <input class="end-date-form" matInput [matDatepicker]="endPicker" />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="endPicker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #endPicker></mat-datepicker>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <mat-form-field class="example-full-width">
+      <mat-label>Other time info (optional)</mat-label>
+      <input matInput class="time-info-form" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Image (optional)</mat-label>
+      <input matInput class="image-form" />
+    </mat-form-field>
+  </form>
+  <button mat-flat-button color="accent" (click)="createEventFromData()">
+    Create
+  </button>
+  <p>{{ message }}</p>
+  <mat-divider></mat-divider>
+  <h2>Update existing event</h2>
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Event ID</mat-label>
+      <input matInput class="id-form" />
+    </mat-form-field>
+    <button mat-button (click)="openIDDialog()">
+      Where can I find the ID?
+    </button>
+    <mat-form-field class="example-full-width">
+      <mat-label>Change this property</mat-label>
+      <input
+        [formControl]="myControl"
+        [matAutocomplete]="auto"
+        matInput
+        class="key-form"
+      />
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let option of filteredOptions | async"
+          [value]="option"
+        >
+          {{ option }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>to this value</mat-label>
+      <input matInput class="value-form" />
+    </mat-form-field>
+  </form>
+  <button mat-flat-button color="accent" (click)="updateEvent()">Update</button>
+  <p>{{ message2 }}</p>
+  <mat-divider></mat-divider>
+  <h2>Delete event</h2>
+  <form>
+    <mat-form-field class="example-quarter-width">
+      <mat-label>Event ID</mat-label>
+      <input class="delete-form" required matInput />
+    </mat-form-field>
+    <br />
+    <button mat-flat-button color="accent" (click)="deleteEvent()">
+      Delete
+    </button>
+    <p>{{ deleteMessage }}</p>
+  </form>
+</main>
