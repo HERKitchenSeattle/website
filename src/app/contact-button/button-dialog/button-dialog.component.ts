@@ -4,8 +4,10 @@ import { FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import $ from 'jquery';
 import { SecondDialogComponent } from './second-dialog/second-dialog.component';
+import firebase from 'firebase/app';
 
 import { messageId, set } from './litterallyJustTheMessageId';
+import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
 
 @Component({
   selector: 'app-button-dialog',
@@ -22,6 +24,7 @@ export class ButtonDialogComponent implements OnInit {
         name: $('.name-form').val(),
         email: $('.email-form').val(),
         message: $('.message-form').val(),
+        date: new Date().toLocaleDateString(),
       })
       .then((docRef) => {
         console.log(`Document written with ID: ${docRef.id}`);
@@ -33,6 +36,7 @@ export class ButtonDialogComponent implements OnInit {
       })
       .catch((err) => {
         console.error(`Error adding document: ${err}`);
+        this.dialog.open(ErrorDialogComponent);
       });
   }
   ngOnInit(): void {}

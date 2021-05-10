@@ -24,10 +24,16 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 import { DialogComponent } from './navbar/dialog/dialog.component';
 import { MatDividerModule } from '@angular/material/divider';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import {
+  CommonModule,
+  HashLocationStrategy,
+  Location,
+  LocationStrategy,
+} from '@angular/common';
 import { ContactButtonComponent } from './contact-button/contact-button.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonDialogComponent } from './contact-button/button-dialog/button-dialog.component';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -37,9 +43,13 @@ import {
   PerformanceMonitoringService,
 } from '@angular/fire/performance';
 import { LazyLoadImagesDirective } from './lazy-load-images.directive';
+import { ErrorDialogComponent } from './contact-button/button-dialog/error-dialog/error-dialog.component';
+
+//change the keys in main.ts, app.module.ts, environment.ts, and environment.prod.ts.
 const firebaseConfig = {
-  apiKey: 'AIzaSyDEbuKFAVI4kh3i-jqI-dQbAcJHApjrW6o',
+  apiKey: 'AIzaSyBouOK3qYFSPtttpQTIUPR6WDy0AlNvbNY',
   authDomain: 'herkitchenseattle.firebaseapp.com',
+  databaseURL: 'https://herkitchenseattle-default-rtdb.firebaseio.com',
   projectId: 'herkitchenseattle',
   storageBucket: 'herkitchenseattle.appspot.com',
   messagingSenderId: '532110473531',
@@ -64,14 +74,17 @@ const firebaseConfig = {
     ButtonDialogComponent,
     SecondDialogComponent,
     LazyLoadImagesDirective,
+    ErrorDialogComponent,
   ],
   imports: [
     BrowserModule,
+
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     MatToolbarModule,
+    MatSnackBarModule,
     MatIconModule,
     MatTooltipModule,
     MatMenuModule,
@@ -95,6 +108,7 @@ const firebaseConfig = {
 
   providers: [
     PerformanceMonitoringService,
+    Location,
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     Title,
   ],

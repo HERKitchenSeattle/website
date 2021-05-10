@@ -4,7 +4,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import 'firebase/firestore';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 import $ from 'jquery';
 import { Title } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material/dialog';

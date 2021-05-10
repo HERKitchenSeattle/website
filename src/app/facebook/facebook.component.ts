@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-facebook',
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./facebook.component.scss'],
 })
 export class FacebookComponent implements OnInit {
-  constructor() {}
+  constructor(private meta: Meta) {
+    this.meta.updateTag({ name: 'robots', content: 'noindex' });
+  }
 
   ngOnInit(): void {
     window.location.href = 'https://www.facebook.com/HERKitchenSeattle/';

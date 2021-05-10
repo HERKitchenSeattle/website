@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Meta, Title } from '@angular/platform-browser';
 import { first } from 'rxjs/operators';
 
 @Component({
@@ -8,7 +10,15 @@ import { first } from 'rxjs/operators';
   styleUrls: ['./admin.component.scss'],
 })
 export class AdminComponent implements OnInit {
-  constructor(public auth: AngularFireAuth) {}
+  constructor(
+    public auth: AngularFireAuth,
+    private titleService: Title,
+    private db: AngularFirestore,
+    public meta: Meta
+  ) {
+    this.titleService.setTitle(`Messages - Admin - HER Kitchen Seattle`);
+    this.meta.updateTag({ name: 'robots', content: 'noindex' });
+  }
   isLoggedIn() {
     return this.auth.authState.pipe(first()).toPromise();
   }

@@ -15,6 +15,7 @@ export class ContactComponent implements OnInit {
     public meta: Meta
   ) {
     this.titleService.setTitle(`Contact - HER Kitchen Seattle`);
+    this.meta.updateTag({ name: 'robots', content: 'index' });
   }
   openMessageDialog() {
     this.dialog.open(ButtonDialogComponent);

@@ -1,8 +1,10 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: 'AIzaSyDEbuKFAVI4kh3i-jqI-dQbAcJHApjrW6o',
+    //change the keys in main.ts, app.module.ts, environment.ts, and environment.prod.ts.
+    apiKey: 'AIzaSyBouOK3qYFSPtttpQTIUPR6WDy0AlNvbNY',
     authDomain: 'herkitchenseattle.firebaseapp.com',
+    databaseURL: 'https://herkitchenseattle-default-rtdb.firebaseio.com',
     projectId: 'herkitchenseattle',
     storageBucket: 'herkitchenseattle.appspot.com',
     messagingSenderId: '532110473531',

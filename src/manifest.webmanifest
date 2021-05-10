@@ -5,7 +5,6 @@
   "description": "A vegan and gluten free bakery.",
   "theme_color": "#ffeb3b",
   "background_color": "#ffeb3b",
-  "display": "minimal-ui",
   "scope": "/",
   "start_url": "/?utm_source=pwa&utm_medium=pwa&utm_campaign=pwa",
   "icons": [

@@ -3,7 +3,6 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
-import 'lazysizes';
 
 if (environment.production) {
   enableProdMode();
@@ -11,10 +10,17 @@ if (environment.production) {
 
 platformBrowserDynamic()
   .bootstrapModule(AppModule)
+  .then(() => {
+    if ('serviceWorker' in navigator && environment.production) {
+      navigator.serviceWorker.register('ngsw-worker.js');
+    }
+  })
   .catch((err) => console.error(err));
+//change the keys in main.ts, app.module.ts, environment.ts, and environment.prod.ts.
 export const firebaseConfig = {
-  apiKey: 'AIzaSyDEbuKFAVI4kh3i-jqI-dQbAcJHApjrW6o',
+  apiKey: 'AIzaSyBouOK3qYFSPtttpQTIUPR6WDy0AlNvbNY',
   authDomain: 'herkitchenseattle.firebaseapp.com',
+  databaseURL: 'https://herkitchenseattle-default-rtdb.firebaseio.com',
   projectId: 'herkitchenseattle',
   storageBucket: 'herkitchenseattle.appspot.com',
   messagingSenderId: '532110473531',

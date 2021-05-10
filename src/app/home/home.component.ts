@@ -8,6 +8,7 @@ import { Meta, Title } from '@angular/platform-browser';
 })
 export class HomeComponent implements OnInit {
   public constructor(private titleService: Title, public meta: Meta) {
+    this.meta.updateTag({ name: 'robots', content: 'index' });
     this.setTitle('Home');
     window.history.pushState('string', '', '/');
     this.meta.updateTag({

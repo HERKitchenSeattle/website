@@ -1,10 +1,28 @@
-# google bot searching
-User-agent: Googlebot
-Allow: /
-
 # everything
-
 User-agent: *
+Disallow: /#/admin/
+Disallow: /admin/
+Disallow: /admin
+Disallow: /#/admin
+Disallow: admin
+Disallow: #/admin
+Disallow: admin/
+Disallow: #/admin/
+Disallow: #/facebook
+Disallow: #/instagram
+Disallow: #/page-not-found
 Allow: /
+Disallow: assets/
+Disallow: assets/icons/
+Disallow: assets/SVG/
+Allow: assets/images/*.jpg$
+
+	
+
+User-agent: Googlebot-Image
+Disallow: assets/
+Disallow: assets/icons/
+Disallow: assets/SVG/
+Allow: assets/images/*.jpg$
 
 Sitemap: https://herkitchenseattle.web.app/sitemap.xml

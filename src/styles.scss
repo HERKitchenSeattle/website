@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import './assets/tailwind.min.css';
 @import '@angular/material/prebuilt-themes/purple-green.css';
-
+@import './assets/real-purple-green.css';
 @import './variables';
 
 @include mat-core();
@@ -29,6 +29,10 @@ a {
     color: mat-color($accent);
     text-decoration: underline;
   }
+}
+.mat-snack-bar-container {
+  background: #424242 !important;
+  color: #fff !important;
 }
 .mat-list-item-content {
   margin-bottom: 5px;
@@ -69,4 +73,23 @@ input:-webkit-autofill:active {
 }
 .mat-warn {
   color: $warn;
+}
+.mat-table {
+  background: #424242 !important;
+  color: #fff !important;
+}
+.mat-cell,
+.mat-footer-cell {
+  color: hsla(0, 0%, 100%, 0.7) !important;
+}
+tr.example-message-row:not(.example-expanded-row):hover {
+  background: #363636 !important;
+}
+mat-row,
+mat-header-row,
+mat-footer-row,
+th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
+  color: hsla(0, 0%, 100%, 0.7) !important;
 }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
 
 import { ConsoleRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
@@ -11,7 +12,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
-import { firebaseConfig } from '../../main';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -22,11 +22,22 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { SignOutComponent } from './sign-out/sign-out.component';
 import { DeleteConfirmComponent } from './events/delete-confirm/delete-confirm.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
-  declarations: [AdminComponent, LoginComponent, EventsComponent, SignOutComponent, DeleteConfirmComponent],
+  declarations: [
+    AdminComponent,
+    MessagesComponent,
+    LoginComponent,
+    EventsComponent,
+    SignOutComponent,
+    DeleteConfirmComponent,
+  ],
   imports: [
     CommonModule,
+
     ConsoleRoutingModule,
     MatInputModule,
     FormsModule,
@@ -36,6 +47,8 @@ import { DeleteConfirmComponent } from './events/delete-confirm/delete-confirm.c
     MatDatepickerModule,
     MatCardModule,
     MatDividerModule,
+    MatPaginatorModule,
+    MatTableModule,
     MatNativeDateModule,
     MatDialogModule,
     MatAutocompleteModule,

@@ -1,0 +1,44 @@
+main {
+  margin-left: 400px;
+  margin-right: 400px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+@media only screen and (max-width: 1200px) {
+  main {
+    margin: 5px 20px 5px 20px;
+  }
+}
+@import '../../../variables';
+table {
+  width: 100%;
+}
+
+tr.example-detail-row {
+  height: 0;
+}
+
+tr.example-message-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.example-message-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+
+.example-message-row td {
+  border-bottom-width: 0;
+}
+
+.example-message-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+.example-message-description {
+  padding: 16px;
+}
+
+.example-message-description-attribution {
+  opacity: 0.5;
+}

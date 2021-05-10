@@ -1,4 +1,3 @@
-<mat-spinner color="accent" class="spinner" *ngIf="loading"></mat-spinner>
 <script>
   function jsCloseDialog(index) {
     document.getElementById('item-' + index).classList.toggle('hidden');
@@ -61,7 +60,7 @@ muffins
     </h3>
     <mat-divider></mat-divider>
   </div>
-  <section class="menu-grid classic-cookie-grid" *ngIf="!loading">
+  <section class="menu-grid classic-cookie-grid">
     <div
       *ngFor="let cookie of classicCookies; index as i"
       class="menu-card"
@@ -110,7 +109,7 @@ muffins
     <mat-divider></mat-divider>
   </div>
 
-  <section class="menu-grid shortbread-cookie-grid" *ngIf="!loading">
+  <section class="menu-grid shortbread-cookie-grid">
     <div
       *ngFor="let cookie of shortbreadCookies; index as i"
       class="menu-card"
@@ -128,7 +127,7 @@ muffins
           loading="lazy"
           src="/assets/images/shortbreadCookies/{{ cookie.fileName }}.jpg"
           alt="{{ cookie.name }}"
-          class="lazyload menu-image"
+          class="menu-image"
           height="200px"
         />
         <mat-card-content>
@@ -138,13 +137,59 @@ muffins
       </mat-card>
     </div>
   </section>
+  <div class="item-header" id="oat-bars">
+    <h2>Oat Bars</h2>
+    <h3>
+      Sprouted oat bar, good on its own, or crumbled up as granola. A treat that
+      feeds your hunger or gives you an energy boost.
+    </h3>
+    <mat-divider></mat-divider>
+  </div>
+  <section class="menu-grid oat-bar-grid">
+    <div
+      *ngFor="let bar of oatBars; index as i"
+      class="menu-card oat-bar-card"
+      id="{{ bar.name.toLowerCase().replace(' ', '-').replace('\'', '') }}-card"
+    >
+      <mat-card style="width: 300px" class="material-menu-card">
+        <mat-card-header>
+          <mat-card-title>
+            {{ bar.name }}
+          </mat-card-title>
+        </mat-card-header>
+        <img
+          *ngIf="bar.image != false"
+          loading="lazy"
+          src="/assets/images/oatBars/{{ bar.fileName }}.jpg"
+          alt="{{ bar.name }}"
+          class="menu-image"
+          height="200px"
+        />
+        <img
+          *ngIf="bar.image == false"
+          loading="lazy"
+          src="/assets/images/noImage.png"
+          alt="Image coming soon"
+          class="menu-image"
+          height="200px"
+        />
+        <mat-card-content>
+          <p *ngIf="bar.desc">{{ bar.desc }}</p>
+          <p>{{ bar.price }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </section>
   <div class="item-header" id="keto-bars">
     <h2>Keto Bars</h2>
-    <!-- <h3></h3> -->
+    <h3>
+      Keto friendly. Lightly sweetened by monk fruit. Presoaked nuts to enhance
+      absorbability of the nuts’ nutrients.
+    </h3>
     <mat-divider></mat-divider>
   </div>
 
-  <section class="menu-grid keto-bar-grid" *ngIf="!loading">
+  <section class="menu-grid keto-bar-grid">
     <div class="menu-card" id="keto-bar-card">
       <mat-card class="material-menu-card" style="width: 200px">
         <mat-card-header>

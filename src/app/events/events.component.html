@@ -1,6 +1,5 @@
 <main>
   <h1>Events</h1>
-  <h3>Updates live!</h3>
   <mat-card *ngFor="let event of events | async">
     <mat-card-header>
       <mat-card-title>{{ event.name }}</mat-card-title>
@@ -12,8 +11,8 @@
           }}"
           target="_blank"
           >{{ $any(event).address }}</a
-        ></mat-card-subtitle
-      >
+        >
+      </mat-card-subtitle>
     </mat-card-header>
     <img
       *ngIf="event.imageUrl"

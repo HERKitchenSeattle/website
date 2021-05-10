@@ -1,1 +1,52 @@
-<p>messages works!</p>
+<main>
+  <h2>Messages</h2>
+  <div class="mat-elevation-z8">
+    <table
+      multiTemplateDataRows
+      mat-table
+      [dataSource]="actualMessages"
+      class="mat-elevation-z8"
+    >
+      <ng-container
+        matColumnDef="{{ column }}"
+        *ngFor="let column of displayedColumns"
+      >
+        <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+        <td mat-cell *matCellDef="let message">{{ message[column] }}</td>
+      </ng-container>
+      <ng-container matColumnDef="expandedDetail">
+        <td
+          mat-cell
+          *matCellDef="let message"
+          [attr.colspan]="displayedColumns.length"
+        >
+          <div
+            class="example-message-detail"
+            [@detailExpanded]="
+              message == expandedMessage ? 'expanded' : 'collapsed'
+            "
+          >
+            <span>{{ message.message }}</span>
+          </div>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr
+        mat-row
+        *matRowDef="let message; columns: displayedColumns"
+        class="example-message-row"
+        [class.example-expanded-row]="expandedMessage === message"
+        (click)="expandedMessage = expandedMessage === message ? null : message"
+      ></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: ['expandedDetail']"
+        class="example-detail-row"
+      ></tr>
+    </table>
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+    ></mat-paginator>
+  </div>
+</main>

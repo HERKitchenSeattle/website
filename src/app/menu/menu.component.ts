@@ -1,22 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 
 import { MatDialog } from '@angular/material/dialog';
-import {
-  Router,
-  Event,
-  NavigationStart,
-  NavigationEnd,
-  NavigationError,
-} from '@angular/router';
+
 import $ from 'jquery';
 
 import { Meta, Title } from '@angular/platform-browser';
 
-interface cookies {
+interface Product {
   name: string;
   desc?: string;
   price?: string;
   fileName?: string;
+  image?: boolean;
 }
 
 @Component({
@@ -28,7 +23,6 @@ export class MenuComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private titleService: Title,
-    private router: Router,
     public meta: Meta
   ) {
     this.titleService.setTitle(`Menu - HER Kitchen Seattle`);
@@ -37,38 +31,18 @@ export class MenuComponent implements OnInit {
       content:
         "HER Kitchen's vegan and gluten free menu. Cookies, muffins, brownies, bars, and more!",
     });
-
-    this.router.events.subscribe((event: Event) => {
-      if (event instanceof NavigationStart) {
-        $('.spinner').show();
-      }
-
-      if (event instanceof NavigationEnd) {
-        // Hide loading indicator
-        $('.spinner').hide();
-        $('.main').show();
-      }
-
-      if (event instanceof NavigationError) {
-        // Hide loading indicator
-        $('.spinner').hide();
-        $('.main').show();
-        // Present error to user
-        console.log(event.error);
-      }
-    });
   }
   scroll(el: string) {
     let id = document.getElementById(el);
     id?.scrollIntoView({ behavior: 'smooth' });
   }
-  loading = true;
+
   openDialog(index: number): void {
     document.getElementById('item-' + index)?.classList.toggle('hidden');
   }
   panelOpenState = false;
   cookiesFolder = '../../assets/images/cookies';
-  classicCookies: Array<cookies> = [
+  classicCookies: Product[] = [
     {
       name: 'Black Forest',
       desc: 'Chocolate and bing cherries',
@@ -156,7 +130,7 @@ export class MenuComponent implements OnInit {
       price: '$2.50',
     },
   ];
-  shortbreadCookies: cookies[] = [
+  shortbreadCookies: Product[] = [
     {
       name: 'Beet',
       price: '$2.00',
@@ -174,6 +148,21 @@ export class MenuComponent implements OnInit {
       name: 'Orange',
     },
   ];
+  oatBars: Product[] = [
+    {
+      name: 'Oat',
+    },
+    {
+      name: 'Chocolate',
+    },
+    {
+      name: 'Chocolate Chip',
+    },
+    {
+      name: 'Coconut',
+      image: false,
+    },
+  ];
   columns = 4;
   closeDialog(index: number) {
     document.getElementById('item-' + index)?.classList.toggle('hidden');
@@ -187,6 +176,17 @@ export class MenuComponent implements OnInit {
         cookie.price = '$2.50';
       }
     }
+    for (let bar of this.oatBars) {
+      if (!bar.fileName) {
+        bar.fileName = bar.name;
+      }
+      if (!bar.price) {
+        bar.price = '$3.50';
+      }
+      if (bar.image != false) {
+        bar.image = true;
+      }
+    }
     for (let cookie of this.shortbreadCookies) {
       if (!cookie.fileName) {
         cookie.fileName = cookie.name;
@@ -195,7 +195,5 @@ export class MenuComponent implements OnInit {
         cookie.price = '$2.00';
       }
     }
-
-    this.loading = false;
   }
 }

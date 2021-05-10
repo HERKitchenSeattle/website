@@ -10,6 +10,8 @@ import { MatCardModule } from '@angular/material/card';
 import { firebaseConfig } from '../../main';
 import { MatDividerModule } from '@angular/material/divider';
 
+import { MatDialogModule } from '@angular/material/dialog';
+
 @NgModule({
   declarations: [EventsComponent],
   imports: [
@@ -19,6 +21,7 @@ import { MatDividerModule } from '@angular/material/divider';
     AngularFirestoreModule,
     MatCardModule,
     MatDividerModule,
+    MatDialogModule,
   ],
 })
 export class EventsModule {}

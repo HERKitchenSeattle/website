@@ -2,8 +2,8 @@
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  $stagger-delay: 100ms;
 }
+
 mat-list {
   margin-bottom: 25px;
 }
@@ -12,6 +12,7 @@ a[mat-list-item] {
 }
 .item-header {
   margin-bottom: 25px;
+  margin-top: 10px;
 }
 .menu-image {
   width: calc(100% + 32px);
@@ -76,122 +77,15 @@ main {
     opacity: 100%;
   }
 }
-.spinner {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 25px;
-  // text-align: center;
-  // justify-content: center;
-  // align-self: center;
-}
 
 h2 {
   line-height: 1.6;
-}
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
 }
 
 mat-expansion-panel {
   max-width: 400px;
 }
 
-/* Modal Content (Image) */
-.modal-content {
-  margin: auto;
-  display: block;
-  width: 80%;
-  max-width: 700px;
-}
-
-/* Caption of Modal Image (Image Text) - Same Width as the Image */
-#caption {
-  margin: auto;
-  display: block;
-  width: 80%;
-  max-width: 700px;
-  text-align: center;
-  color: #ccc;
-  padding: 10px 0;
-  height: 150px;
-}
-
-@keyframes zoom {
-  from {
-    transform: scale(0);
-  }
-  to {
-    transform: scale(1);
-  }
-}
-
-/* The Close Button */
-.close {
-  position: absolute;
-  top: 15px;
-  right: 35px;
-  color: #f1f1f1;
-  font-size: 40px;
-  font-weight: bold;
-  transition: 0.3s;
-  &:hover,
-  &:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-  }
-}
-.popup-bg {
-  position: fixed;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
-  top: 0;
-  left: 0;
-  z-index: 100000000000;
-  .popup-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 55vh;
-    height: 50%;
-    z-index: 99999999999999999;
-    background: white;
-    border-radius: 10px;
-    .popup-image {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      height: 80%;
-      width: auto;
-    }
-    .close-button {
-      position: absolute;
-      top: 80%;
-      left: 80%;
-    }
-  }
-}
-/* 100% Image Width on Smaller Screens */
-@media only screen and (max-width: 700px) {
-  .modal-content {
-    width: 100%;
-  }
-}
 .hidden {
   display: none;
 }
