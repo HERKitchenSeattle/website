@@ -1,9 +1,21 @@
 <main>
-  <div class="example-button-container">
+  <div class="example-button-container" id="enabled-contact">
     <button
       (click)="openMessageDialog()"
       matTooltip="Send us a message!"
       mat-fab
+      color="accent"
+      aria-label="Example icon button with a delete icon"
+    >
+      <span class="material-icons icon-question">question_answer</span>
+    </button>
+  </div>
+  <div class="example-button-container" id="enabled-contact">
+    <button
+      (click)="openMessageDialog()"
+      matTooltip="Send us a message!"
+      mat-fab
+      disabled
       color="accent"
       aria-label="Example icon button with a delete icon"
     >

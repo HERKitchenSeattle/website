@@ -6,6 +6,7 @@ import firebase from 'firebase/app';
 import $ from 'jquery';
 import { Title } from '@angular/platform-browser';
 import { first } from 'rxjs/operators';
+const perf = firebase.performance();
 
 @Component({
   selector: 'app-login',
@@ -142,39 +143,50 @@ export class LoginComponent implements OnInit {
       }
     });
     $('form.login').on('submit', (event) => {
-      event.preventDefault();
-      let email = $('.email').val();
-      let password = $('.password').val();
-      this.auth
-        .signInWithEmailAndPassword(email as string, password as string)
-        .then(async (user) => {
-          console.log(user);
+      const trace = perf.trace('userLogin');
 
-          if (!user.user?.emailVerified) {
-            (await this.auth.currentUser)?.sendEmailVerification().then(() => {
-              console.log('sent!');
-              this.message =
-                'Your email is not verified; we sent an email to you.';
+      trace.start();
+      event.preventDefault();
+      try {
+        let email = $('.email').val();
+        let password = $('.password').val();
+
+        this.auth
+          .signInWithEmailAndPassword(email as string, password as string)
+          .then(async (user) => {
+            console.log(user);
+            trace.putAttribute('verified', `${user.user?.emailVerified}`);
+            if (!user.user?.emailVerified) {
+              (await this.auth.currentUser)
+                ?.sendEmailVerification()
+                .then(() => {
+                  console.log('sent!');
+                  this.message =
+                    'Your email is not verified; we sent an email to you.';
+                  this.errCode = '';
+                });
+            } else {
+              this.message = 'signed in!!';
               this.errCode = '';
-            });
-          } else {
-            this.message = 'signed in!!';
-            this.errCode = '';
-            this.auth
-              .setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-              .then(() => {
-                return this.auth.signInWithEmailAndPassword(
-                  email as string,
-                  password as string
-                );
-              });
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-          this.message = err.message;
-          this.errCode = err.code;
-        });
+              this.auth
+                .setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+                .then(() => {
+                  return this.auth.signInWithEmailAndPassword(
+                    email as string,
+                    password as string
+                  );
+                });
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+            this.message = err.message;
+            this.errCode = err.code;
+            trace.putAttribute('errorCode', err.code);
+          });
+      } catch (error) {}
+
+      trace.stop();
     });
   }
 }

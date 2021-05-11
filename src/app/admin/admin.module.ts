@@ -25,6 +25,7 @@ import { DeleteConfirmComponent } from './events/delete-confirm/delete-confirm.c
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MessagesComponent } from './messages/messages.component';
+import { AngularFirePerformanceModule } from '@angular/fire/performance';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { MessagesComponent } from './messages/messages.component';
     AngularFireModule,
     AngularFireAuthModule,
     AngularFirestoreModule.enablePersistence(),
+    AngularFirePerformanceModule,
   ],
 })
 export class AdminModule {}
