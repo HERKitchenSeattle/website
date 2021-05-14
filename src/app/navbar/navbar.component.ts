@@ -12,7 +12,7 @@ interface Pages {
 }
 
 @Component({
-  selector: 'app-navbar',
+  selector: 'her-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })

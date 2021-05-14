@@ -1,8 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import './assets/tailwind.min.css';
-@import '@angular/material/prebuilt-themes/purple-green.css';
-@import './assets/real-purple-green.css';
+
 @import './variables';
+[theme='dark'] {
+  @import './assets/purple-green.css';
+  @import './assets/real-purple-green.css';
+}
 
 @include mat-core();
 $primary: mat-palette($mat-yellow, 500);
@@ -10,6 +13,9 @@ $accent: mat-palette($mat-pink, 500);
 
 .material-icons.md-dark {
   color: #000;
+}
+* {
+  font-display: swap !important;
 }
 html,
 body {
@@ -73,6 +79,9 @@ input:-webkit-autofill:active {
 }
 .mat-warn {
   color: $warn;
+}
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+  background-color: lighten(mat-color($accent), 20%) !important;
 }
 .mat-table {
   background: #424242 !important;

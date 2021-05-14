@@ -1,28 +1,25 @@
-# everything
+# robots.txt file for HER Kitchen Seattle.
+# This is a file for search engines indexing this site.
+
 User-agent: *
-Disallow: /#/admin/
-Disallow: /admin/
+Disallow: /admin/*
+Disallow: /#/admin/*
 Disallow: /admin
 Disallow: /#/admin
-Disallow: admin
-Disallow: #/admin
-Disallow: admin/
-Disallow: #/admin/
-Disallow: #/facebook
-Disallow: #/instagram
-Disallow: #/page-not-found
-Allow: /
-Disallow: assets/
-Disallow: assets/icons/
-Disallow: assets/SVG/
-Allow: assets/images/*.jpg$
-
-	
+Disallow: /#/facebook
+Disallow: /#/instagram
+Disallow: /facebook
+Disallow: /instagram
+Disallow: /assets/*
+Disallow: /assets
+Disallow: /assets/icons/
+Disallow: /assets/SVG/
+Allow: /assets/images/*.jpg$
 
 User-agent: Googlebot-Image
-Disallow: assets/
-Disallow: assets/icons/
-Disallow: assets/SVG/
-Allow: assets/images/*.jpg$
+Disallow: /assets/
+Disallow: /assets/icons/
+Disallow: /assets/SVG/
+Allow: /assets/images/*.jpg$
 
-Sitemap: https://herkitchenseattle.web.app/sitemap.xml
+Sitemap: https://herkitchenseattle.com/sitemap.xml

@@ -4,6 +4,12 @@
       >A vegan and gluten free bakery based in Seattle, Washington.</span
     >
     <h3><a (click)="scrollToTop()" class="topLink">Scroll to Top</a></h3>
+    <mat-slide-toggle
+      (click)="toggleTheme()"
+      color="accent"
+      [(ngModel)]="darkMode"
+      >Dark Mode</mat-slide-toggle
+    >
     <h4>© {{ year }} HER Kitchen Seattle</h4>
     <h3>Social Media:</h3>
     <h4>

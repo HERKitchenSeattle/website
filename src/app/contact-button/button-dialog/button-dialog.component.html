@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>Contact us!</h1>
 <div mat-dialog-content>
-  <form class="example-form">
+  <form class="example-form" id="messageForm">
     <mat-form-field class="example-full-width">
       <mat-label>Name</mat-label>
       <input
@@ -26,10 +26,17 @@
       <mat-label>Message</mat-label>
       <textarea class="message-form" matInput></textarea>
     </mat-form-field>
+    <div
+      class="g-recaptcha"
+      data-sitekey="6LegENUaAAAAACnmfu0jgW2mYDPycsgw8Q5nGqJY"
+    ></div>
   </form>
 </div>
 <div mat-dialog-actions>
   <button
+    type="submit"
+    form="messageForm"
+    value="Send"
     color="accent"
     mat-raised-button
     mat-dialog-close

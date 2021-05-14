@@ -1,4 +1,5 @@
 {
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
   "name": "HER Kitchen Seattle",
   "version": "0.9.4",
   "short_name": "HER Kitchen",
@@ -6,6 +7,7 @@
   "theme_color": "#ffeb3b",
   "background_color": "#ffeb3b",
   "scope": "/",
+  "display": "fullscreen",
   "start_url": "/?utm_source=pwa&utm_medium=pwa&utm_campaign=pwa",
   "icons": [
     {

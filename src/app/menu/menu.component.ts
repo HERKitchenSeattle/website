@@ -162,12 +162,21 @@ export class MenuComponent implements OnInit {
       name: 'Coconut',
       image: false,
     },
+    {
+      name: 'Matcha',
+    },
   ];
+  muffins: Product = {
+    name: 'Muffins',
+  };
   columns = 4;
   closeDialog(index: number) {
     document.getElementById('item-' + index)?.classList.toggle('hidden');
   }
   ngOnInit(): void {
+    let x = 'epic';
+    console.log(x);
+
     for (let cookie of this.classicCookies) {
       if (!cookie.fileName) {
         cookie.fileName = cookie.name;

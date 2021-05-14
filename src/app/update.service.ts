@@ -9,8 +9,22 @@ import { interval } from 'rxjs';
 export class UpdateService {
   constructor(public updates: SwUpdate, public _snackBar: MatSnackBar) {
     if (updates.isEnabled) {
-      interval(30000).subscribe(() =>
-        updates.checkForUpdate().then(() => console.log('checking for updates'))
+      updates
+        .checkForUpdate()
+        .then(() =>
+          console.log(
+            'checking for updates. time is ' + new Date().getUTCDate()
+          )
+        );
+
+      interval(15000).subscribe(() =>
+        updates
+          .checkForUpdate()
+          .then(() =>
+            console.log(
+              'checking for updates. time is ' + new Date().getUTCDate()
+            )
+          )
       );
     }
   }

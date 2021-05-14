@@ -43,7 +43,10 @@ import {
   PerformanceMonitoringService,
 } from '@angular/fire/performance';
 import { LazyLoadImagesDirective } from './lazy-load-images.directive';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ErrorDialogComponent } from './contact-button/button-dialog/error-dialog/error-dialog.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 //change the keys in main.ts, app.module.ts, environment.ts, and environment.prod.ts.
 const firebaseConfig = {
@@ -79,10 +82,13 @@ const firebaseConfig = {
   imports: [
     BrowserModule,
 
+    ScrollingModule,
+
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    MatProgressSpinnerModule,
     MatToolbarModule,
     MatSnackBarModule,
     MatIconModule,
@@ -92,7 +98,7 @@ const firebaseConfig = {
     MatDialogModule,
     MatDividerModule,
     MatFormFieldModule,
-
+    MatSlideToggleModule,
     MatInputModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirePerformanceModule,

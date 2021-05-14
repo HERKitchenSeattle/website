@@ -40,7 +40,7 @@
               "src/_variables.scss"
             ],
             "scripts": [],
-            "allowedCommonJsDependencies": ["jquery"]
+            "allowedCommonJsDependencies": ["jquery", "crypto-js"]
           },
           "configurations": {
             "production": {
