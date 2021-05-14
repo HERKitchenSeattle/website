@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@use '~@angular/material' as mat;
 @import './assets/tailwind.min.css';
 
 @import './variables';
@@ -7,9 +8,9 @@
   @import './assets/real-purple-green.css';
 }
 
-@include mat-core();
-$primary: mat-palette($mat-yellow, 500);
-$accent: mat-palette($mat-pink, 500);
+@include mat.core();
+$primary: mat.define-palette(mat.$yellow-palette, 500);
+$accent: mat.define-palette(mat.$pink-palette, 500);
 
 .material-icons.md-dark {
   color: #000;
@@ -29,10 +30,10 @@ body {
   color: #fff;
 }
 a {
-  color: mat-color($accent);
+  color: mat.get-color-from-palette($accent);
   text-decoration: none;
   &:hover {
-    color: mat-color($accent);
+    color: mat.get-color-from-palette($accent);
     text-decoration: underline;
   }
 }
@@ -81,7 +82,7 @@ input:-webkit-autofill:active {
   color: $warn;
 }
 .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
-  background-color: lighten(mat-color($accent), 20%) !important;
+  background-color: lighten(mat.get-color-from-palette($accent), 20%) !important;
 }
 .mat-table {
   background: #424242 !important;
