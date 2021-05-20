@@ -24,7 +24,11 @@ export class LoginComponent implements OnInit {
     private titleService: Title
   ) {
     if (typeof document !== undefined) {
-      document.getElementById('goToDash')!.style.display = 'none';
+      // document.getElementById('goToDash')!.style.display = 'none';
+      document.querySelectorAll('#goToDash').forEach((el) => {
+        //@ts-ignore
+        el.style.display = 'none';
+      });
     }
   }
   email = new FormControl('', [Validators.required, Validators.email]);

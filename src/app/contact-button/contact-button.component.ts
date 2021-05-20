@@ -19,16 +19,30 @@ export class ContactButtonComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (typeof document !== undefined) {
+    if (typeof window !== undefined) {
       if (
         parseInt(window.localStorage.getItem('xm')!.toString()) <
         new Date().getTime()
       ) {
-        document.getElementById('enabled-contact')!.style.display = 'fixed';
-        document.getElementById('disabled-contact')!.style.display = 'none';
+        document.querySelectorAll('#enabled-contact').forEach((el) => {
+          //@ts-ignore
+          el.style.display = 'fixed';
+        });
+
+        document.querySelectorAll('#disabled-contact').forEach((el) => {
+          //@ts-ignore
+          el.style.display = 'none';
+        });
       } else {
-        document.getElementById('enabled-contact')!.style.display = 'none';
-        document.getElementById('disabled-contact')!.style.display = 'fixed';
+        document.querySelectorAll('#enabled-contact').forEach((el) => {
+          //@ts-ignore
+          el.style.display = 'none';
+        });
+
+        document.querySelectorAll('#disabled-contact').forEach((el) => {
+          //@ts-ignore
+          el.style.display = 'fixed';
+        });
       }
     }
   }

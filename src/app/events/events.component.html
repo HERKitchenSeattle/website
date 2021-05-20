@@ -21,8 +21,8 @@
     />
     <mat-card-content>
       <h3>
-        {{ event.startDate }} to
-        {{ event.endDate }}
+        {{ timestampToDate(event.startDate) }} to
+        {{ timestampToDate(event.endDate) }}
       </h3>
       <h3>{{ $any(event).otherTimeStuff }}</h3>
       <p *ngIf="event.description">

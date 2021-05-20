@@ -56,6 +56,9 @@ export class EventsComponent implements OnInit {
   encodeURIComponent(url: any) {
     return encodeURIComponent(url);
   }
+  timestampToDate(timestamp: any) {
+    return new Date(timestamp.toDate()).toLocaleDateString('en-US');
+  }
   ngOnInit(): void {
     this.eventsCollection = this.db.collection('events', (ref) => {
       return ref.orderBy('startDate').limit(10);

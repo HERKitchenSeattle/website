@@ -16,7 +16,7 @@ platformBrowserDynamic()
       navigator.serviceWorker.register('ngsw-worker.js');
     }
   })
-  .catch((err) => console.error(err));
+  .catch((err: Error) => console.error(err));
 //change the keys in main.ts, app.module.ts, environment.ts, and environment.prod.ts.
 export const firebaseConfig = {
   apiKey: 'AIzaSyBouOK3qYFSPtttpQTIUPR6WDy0AlNvbNY',

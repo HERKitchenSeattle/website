@@ -6,6 +6,7 @@
       <input
         [(ngModel)]="nameVal"
         required="true"
+        name="name"
         spellcheck="false"
         matInput
         placeholder="Ex. John Doe"
@@ -19,6 +20,7 @@
         [(ngModel)]="emailVal"
         [formControl]="email"
         matInput
+        name="email"
         spellcheck="false"
         placeholder="Ex. johndoe@gmail.com"
         class="email-form"
@@ -28,6 +30,7 @@
       <mat-label>Message</mat-label>
       <textarea
         [(ngModel)]="messageVal"
+        name="message"
         class="message-form"
         matInput
       ></textarea>
@@ -44,7 +47,7 @@
     form="messageForm"
     value="Send"
     color="accent"
-    mat-raised-button
+    mat-flat-button
     mat-dialog-close
     (click)="sendMessage()"
   >

@@ -21,6 +21,7 @@ import { DirectivesModule } from '../directives/directives.module';
 
 @NgModule({
   declarations: [MenuComponent, DetailComponent],
+
   imports: [
     CommonModule,
     MenuRoutingModule,

@@ -27,22 +27,23 @@ export class EventsComponent implements OnInit {
   // FORM VALUES
 
   // create event
-  name!: string;
-  description!: string;
-  location!: string;
-  address!: string;
-  startDate!: string;
-  endDate!: string;
-  timeInfo!: string;
-  image!: string;
+  name: string = '';
+
+  description: string = '';
+  location: string = '';
+  address: string = '';
+  startDate: string = '';
+  endDate: string = '';
+  timeInfo: string = '';
+  image: string = '';
 
   // update event
-  eventId!: string;
-  key!: string;
-  value!: string;
+  eventId: string = '';
+  key: string = '';
+  value: string = '';
 
   // delete event
-  eventDelete!: string;
+  eventDelete: string = '';
   // END FORM VALUES
   myControl = new FormControl();
   options: string[] = [

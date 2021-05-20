@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+
     <script>
       if (window) {
         function detectIE() {
@@ -51,9 +52,7 @@
           return false;
         }
         if (detectIE()) {
-          document
-            .querySelector('her-kitchen')
-            .setAttribute('style', 'display: none;');
+          document.getElementById('epic-main').style.display = 'none';
         }
       }
     </script>
@@ -80,12 +79,14 @@
     <base href="/" />
     <meta name="robots" content="index" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <link rel="icon" type="image/x-icon" href="assets/images/s-icon.png" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="assets/roboto.css" rel="stylesheet" />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
     />
     <link rel="manifest" href="manifest.webmanifest" />
     <meta name="theme-color" content="#ffeb3b" />
@@ -235,9 +236,12 @@
       href="assets/icons/apple-splash-1136-640.jpg"
       media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
     />
-    <link href="assets/purple-green.css" rel="stylesheet" />
-      <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600&display=swap" rel="stylesheet">
-</head>
+    <link href="assets/purple-green.css" rel="preload" as="style" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
   <body class="mat-typography docs-app-background">
     <!-- Google Tag Manager (noscript) -->
     <noscript
@@ -249,7 +253,10 @@
       ></iframe
     ></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <her-kitchen>HER Kitchen Seattle</her-kitchen>
+    <section id="epic-main">
+      <her-kitchen>HER Kitchen Seattle</her-kitchen>
+    </section>
+
     <noscript>A Vegan and gluten free bakery based in Washington</noscript>
 
     <link href="assets/purple-green.css" rel="stylesheet" />

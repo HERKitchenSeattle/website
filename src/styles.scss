@@ -3,19 +3,38 @@
 @use '~@angular/material' as mat;
 @use 'variables';
 @include mat.core();
-@import 'bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/bootstrap';
 @import '~mdb-angular-ui-kit/assets/scss/mdb.scss';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
 @import '~@fortawesome/fontawesome-free/scss/solid.scss';
 @import '~@fortawesome/fontawesome-free/scss/regular.scss';
 @import '~@fortawesome/fontawesome-free/scss/brands.scss'; // MDB SCSS
 @import '~mdb-angular-ui-kit/assets/scss/mdb.scss';
+$utilities: map-merge(
+  $utilities,
+  (
+    'color': (
+      property: color,
+      class: color,
+      values: (
+        0: #000,
+        25: #464646,
+        50: #808080,
+        75: rgb(182, 182, 182),
+        100: #ffffff,
+      ),
+    ),
+  )
+);
 
 [color='dark'] {
   color: #200f09;
 }
-
-.material-icons.md-dark {
+.carousel-control-next-icon::after {
+  content: '\e5e1';
+  font-family: 'Material Icons';
+}
+.carousel-control--icon::after .material-icons.md-dark {
   color: #200f09;
 }
 
@@ -63,7 +82,9 @@ input:-webkit-autofill:active {
   background: #424242 !important;
   color: #fff !important;
 }
-
+.navbar {
+  position: -webkit-sticky !important;
+}
 .mat-card-subtitle {
   color: hsla(0, 0%, 100%, 0.7) !important;
 }

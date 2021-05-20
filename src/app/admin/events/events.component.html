@@ -5,21 +5,36 @@
   <form class="example-form">
     <mat-form-field class="example-full-width">
       <mat-label>Event name</mat-label>
-      <input [(ngModel)]="name" matInput class="name-form" />
+      <input [(ngModel)]="name" matInput name="name" class="name-form" />
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
       <mat-label>Description</mat-label>
-      <input [(ngModel)]="description" matInput class="description-form" />
+      <input
+        [(ngModel)]="description"
+        matInput
+        name="description"
+        class="description-form"
+      />
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
       <mat-label>Location</mat-label>
-      <input [(ngModel)]="location" matInput class="location-form" />
+      <input
+        [(ngModel)]="location"
+        matInput
+        name="location"
+        class="location-form"
+      />
     </mat-form-field>
     <mat-form-field class="example-full-width">
       <mat-label>Full address</mat-label>
-      <input [(ngModel)]="address" matInput class="address-form" />
+      <input
+        [(ngModel)]="address"
+        matInput
+        name="address"
+        class="address-form"
+      />
     </mat-form-field>
     <table>
       <tr>
@@ -30,6 +45,7 @@
               [(ngModel)]="startDate"
               class="start-date-form"
               matInput
+              name="start-date"
               [matDatepicker]="startPicker"
             />
             <mat-datepicker-toggle
@@ -44,6 +60,7 @@
             <mat-label>End date</mat-label>
             <input
               [(ngModel)]="endDate"
+              name="end-date"
               class="end-date-form"
               matInput
               [matDatepicker]="endPicker"
@@ -59,12 +76,17 @@
     </table>
     <mat-form-field class="example-full-width">
       <mat-label>Other time info (optional)</mat-label>
-      <input [(ngModel)]="timeInfo" matInput class="time-info-form" />
+      <input
+        [(ngModel)]="timeInfo"
+        name="time-info"
+        matInput
+        class="time-info-form"
+      />
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
       <mat-label>Image (optional)</mat-label>
-      <input [(ngModel)]="image" matInput class="image-form" />
+      <input [(ngModel)]="image" name="image" matInput class="image-form" />
     </mat-form-field>
   </form>
   <button mat-flat-button color="accent" (click)="createEventFromData()">
@@ -87,6 +109,7 @@
         [formControl]="myControl"
         [matAutocomplete]="auto"
         matInput
+        name="key"
         [(ngModel)]="key"
         class="key-form"
       />
@@ -101,7 +124,7 @@
     </mat-form-field>
     <mat-form-field class="example-full-width">
       <mat-label>to this value</mat-label>
-      <input [(ngModel)]="value" matInput class="value-form" />
+      <input [(ngModel)]="value" name="value" matInput class="value-form" />
     </mat-form-field>
   </form>
   <button mat-flat-button color="accent" (click)="updateEvent()">Update</button>
@@ -111,7 +134,13 @@
   <form>
     <mat-form-field class="example-quarter-width">
       <mat-label>Event ID</mat-label>
-      <input [(ngModel)]="eventDelete" class="delete-form" required matInput />
+      <input
+        [(ngModel)]="eventDelete"
+        name="delete"
+        class="delete-form"
+        required
+        matInput
+      />
     </mat-form-field>
     <br />
     <button mat-flat-button color="accent" (click)="deleteEvent()">
