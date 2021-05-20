@@ -1,7 +1,7 @@
 import { Directive, ElementRef } from '@angular/core';
 
 @Directive({
-  selector: 'img',
+  selector: '[src]',
 })
 export class LazyLoadImagesDirective {
   constructor({ nativeElement }: ElementRef<HTMLImageElement>) {

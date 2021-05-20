@@ -10,6 +10,7 @@
             <mat-label>Email</mat-label>
             <input
               matInput
+              [(ngModel)]="emailVal"
               class="email"
               placeholder="pat@example.com"
               [formControl]="email"
@@ -21,6 +22,7 @@
           <mat-form-field class="example-full-width">
             <mat-label>Password</mat-label>
             <input
+              [(ngModel)]="passwordVal"
               spellcheck="false"
               matInput
               required
@@ -41,15 +43,16 @@
           <br />
           <button
             class="signInButton g-recaptcha"
-            mat-raised-button
+            mat-flat-button
             color="accent"
+            id="signInButton"
           >
             Log in
           </button>
           <button
             routerLink="/admin"
-            mat-raised-button
-            class="goToDash"
+            mat-flat-button
+            id="goToDash"
             color="accent"
           >
             Go to dashboard

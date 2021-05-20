@@ -5,7 +5,6 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import 'firebase/firestore';
 import firebase from 'firebase/app';
-import $ from 'jquery';
 import { Title } from '@angular/platform-browser';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -25,6 +24,26 @@ export function actualDeleteEvent(ID: string) {
   styleUrls: ['./events.component.scss'],
 })
 export class EventsComponent implements OnInit {
+  // FORM VALUES
+
+  // create event
+  name!: string;
+  description!: string;
+  location!: string;
+  address!: string;
+  startDate!: string;
+  endDate!: string;
+  timeInfo!: string;
+  image!: string;
+
+  // update event
+  eventId!: string;
+  key!: string;
+  value!: string;
+
+  // delete event
+  eventDelete!: string;
+  // END FORM VALUES
   myControl = new FormControl();
   options: string[] = [
     'name',
@@ -37,7 +56,7 @@ export class EventsComponent implements OnInit {
   ];
   deleteMessage: string = '';
   deleteEvent() {
-    if (!$('.delete-form').val() || $('.delete-form').val() == '') {
+    if (!this.eventDelete || this.eventDelete == '') {
       this.deleteMessage = 'You have to provide an ID.';
     } else {
       this.dialog.open(DeleteConfirmComponent);
@@ -100,35 +119,28 @@ export class EventsComponent implements OnInit {
     }
   }
   async createEventFromData() {
-    if (
-      !$('.name-form').val() ||
-      !$('.start-date-form').val() ||
-      !$('.end-date-form').val()
-    ) {
+    if (!this.name || !this.startDate || !this.endDate) {
       this.message = 'You have at least fill out the name and date fields.';
     } else {
       this.message = 'creating';
-      let imageUrl = $('.image-form').val() as string;
 
       this.createEvent(
-        $('.name-form').val() as string,
-        $('.start-date-form').val() as string,
-        $('.end-date-form').val() as string,
-        $('.description-form').val() as string,
-        $('.location-form').val() as string,
-        $('.address-form').val() as string,
-        imageUrl,
-        $('.time-info').val() as string
+        this.name,
+        this.startDate,
+        this.endDate,
+        this.description,
+        this.location,
+        this.address,
+        this.image,
+        this.timeInfo
       );
     }
   }
   message2: string = '';
   updateEvent() {
-    let updateObj = JSON.parse(
-      `{"${$('.key-form').val()}": "${$('.value-form').val()}"}`
-    );
+    let updateObj = JSON.parse(`{"${this.key}": "${this.value}"}`);
     this.db
-      .doc(`events/${$('.id-form').val()}`)
+      .doc(`events/${this.eventId}`)
       .update(updateObj)
       .then(() => {
         this.message2 = 'Updated!';
@@ -139,7 +151,7 @@ export class EventsComponent implements OnInit {
       });
   }
   openIDDialog() {
-    this.dialog.open(IdDialog);
+    this.dialog.open(IdDialogComponent);
   }
 
   createEvent(
@@ -199,7 +211,8 @@ export class EventsComponent implements OnInit {
   }
 }
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'id-dialog',
   templateUrl: 'id-dialog.html',
 })
-export class IdDialog {}
+export class IdDialogComponent {}

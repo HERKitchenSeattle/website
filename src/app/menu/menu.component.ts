@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { MatDialog } from '@angular/material/dialog';
 
-import $ from 'jquery';
-
 import { Meta, Title } from '@angular/platform-browser';
 
 interface Product {

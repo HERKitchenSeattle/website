@@ -75,6 +75,7 @@
         />
       </div>
     </div>
+
     <button
       class="carousel-control-prev bs-prev"
       type="button"
@@ -82,7 +83,6 @@
       data-bs-slide="prev"
     >
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
     </button>
     <button
       class="carousel-control-next bs-next"
@@ -91,7 +91,41 @@
       data-bs-slide="next"
     >
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
     </button>
   </div>
+  <mdb-carousel
+    [interval]="5000"
+    [animation]="'fade'"
+    [controls]="true"
+    [indicators]="true"
+  >
+    <mdb-carousel-item>
+      <img
+        src="../../assets/images/C4.jpg"
+        class="d-block w-100"
+        alt="Cookies"
+      />
+    </mdb-carousel-item>
+    <mdb-carousel-item>
+      <img
+        src="../../assets/images/C3.jpg"
+        class="d-block w-100"
+        alt="Cookies"
+      />
+    </mdb-carousel-item>
+    <mdb-carousel-item>
+      <img
+        src="../../assets/images/C2.jpg"
+        class="d-block w-100"
+        alt="Cookies"
+      />
+    </mdb-carousel-item>
+    <mdb-carousel-item>
+      <img
+        src="../../assets/images/C1.jpg"
+        class="d-block w-100"
+        alt="Cookies"
+      />
+    </mdb-carousel-item>
+  </mdb-carousel>
 </main>

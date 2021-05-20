@@ -1,22 +1,9 @@
-<script>
-  import { MDCDialog } from '@material/dialog';
-  const dialog = new MDCDialog(document.querySelector('.mdc-dialog'));
-  function openDialog() {
-    dialog.listen('MDCDialog:opened', function () {
-      // Assuming contentElement references a common parent element with the rest of the page's content
-      contentElement.setAttribute('aria-hidden', 'true');
-    });
-    dialog.listen('MDCDialog:closing', function () {
-      contentElement.removeAttribute('aria-hidden');
-    });
-  }
-</script>
 <mat-toolbar class="navbar" id="top" color="primary">
   <mat-toolbar-row class="left-align">
     <div class="navbar-left-container">
       <div fxShow="true" fxHid.gt-sm="true" class="sidenav-toggle">
         <button mat-icon-button (click)="openDialog()">
-          <span class="material-icons md-dark">menu</span>
+          <mat-icon color="dark">menu</mat-icon>
         </button>
       </div>
       <div class="page-links">
@@ -27,7 +14,7 @@
           matTooltip="Home Page"
           routerLink="/"
         >
-          <span class="material-icons md-dark">home</span>
+          <mat-icon color="dark">home</mat-icon>
         </button>
 
         <a
@@ -87,12 +74,12 @@
           <i class="insta-logo"></i>
         </a>
         <a mat-button (click)="share()" matTooltip="Share this page">
-          <span class="material-icons md-dark">share</span>
+          <mat-icon color="dark">share</mat-icon>
         </a>
       </div>
       <div class="right-dropdown">
         <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="More">
-          <span class="material-icons md-dark">more_vert</span>
+          <mat-icon color="dark">more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
           <ng-template matMenuContent>
@@ -102,15 +89,13 @@
           </ng-template>
         </mat-menu>
       </div>
-      <div class="profile-stuff" style="display: none">
+      <div id="profile-stuff" class="profile-stuff" style="display: none">
         <button
           mat-icon-button
           [matMenuTriggerFor]="profileMenu"
           aria-label="Profile"
         >
-          <span class="material-icons md-dark profile-button">
-            account_circle
-          </span>
+          <mat-icon id="account-circle" color="dark">account_circle</mat-icon>
         </button>
         <mat-menu #profileMenu="matMenu">
           <ng-template matMenuContent>

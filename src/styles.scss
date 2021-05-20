@@ -1,23 +1,24 @@
+@use "sass:color";
 /* You can add global styles to this file, and also import other style files */
 @use '~@angular/material' as mat;
-@import './assets/tailwind.min.css';
-
-@import './variables';
-[theme='dark'] {
-  @import './assets/purple-green.css';
-  @import './assets/real-purple-green.css';
-}
-
+@use 'variables';
 @include mat.core();
-$primary: mat.define-palette(mat.$yellow-palette, 500);
-$accent: mat.define-palette(mat.$pink-palette, 500);
+@import 'bootstrap/scss/bootstrap';
+@import '~mdb-angular-ui-kit/assets/scss/mdb.scss';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '~@fortawesome/fontawesome-free/scss/solid.scss';
+@import '~@fortawesome/fontawesome-free/scss/regular.scss';
+@import '~@fortawesome/fontawesome-free/scss/brands.scss'; // MDB SCSS
+@import '~mdb-angular-ui-kit/assets/scss/mdb.scss';
+
+[color='dark'] {
+  color: #200f09;
+}
 
 .material-icons.md-dark {
-  color: #000;
+  color: #200f09;
 }
-* {
-  font-display: swap !important;
-}
+
 html,
 body {
   height: 100%;
@@ -30,10 +31,10 @@ body {
   color: #fff;
 }
 a {
-  color: mat.get-color-from-palette($accent);
+  color: variables.$accent;
   text-decoration: none;
   &:hover {
-    color: mat.get-color-from-palette($accent);
+    color: variables.$accent;
     text-decoration: underline;
   }
 }
@@ -79,10 +80,10 @@ input:-webkit-autofill:active {
   color: rgba(0, 0, 0, 0.87) !important;
 }
 .mat-warn {
-  color: $warn;
+  color: variables.$warn;
 }
 .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
-  background-color: lighten(mat.get-color-from-palette($accent), 20%) !important;
+  background-color: color.adjust(variables.$accent, $lightness: 20%) !important;
 }
 .mat-table {
   background: #424242 !important;

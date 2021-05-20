@@ -6,6 +6,10 @@
 <main class="main">
   <h1>Menu</h1>
   <h2 class="mat-warn">Minimum order of 6 per product.</h2>
+  <h2>
+    You can place an orderon our Facebook:
+    <a target="_blank" routerLink="/facebook"></a>
+  </h2>
   <mat-accordion>
     <mat-expansion-panel
       (opened)="panelOpenState = true"
@@ -82,7 +86,6 @@ muffins
           target="_blank"
         >
           <img
-            loading="lazy"
             src="/assets/images/classicCookies/{{ cookie.fileName }}.jpg"
             alt="{{ cookie.name }}"
             id="cookie {{
@@ -125,7 +128,6 @@ muffins
           </mat-card-title>
         </mat-card-header>
         <img
-          loading="lazy"
           src="/assets/images/shortbreadCookies/{{ cookie.fileName }}.jpg"
           alt="{{ cookie.name }}"
           class="menu-image"
@@ -160,7 +162,6 @@ muffins
         </mat-card-header>
         <img
           *ngIf="bar.image != false"
-          loading="lazy"
           src="/assets/images/oatBars/{{ bar.fileName }}.jpg"
           alt="{{ bar.name }}"
           class="menu-image"
@@ -168,7 +169,6 @@ muffins
         />
         <img
           *ngIf="bar.image == false"
-          loading="lazy"
           src="/assets/images/noImage.png"
           alt="Image coming soon"
           class="menu-image"
@@ -197,7 +197,6 @@ muffins
           <mat-card-title> Keto Bar </mat-card-title>
         </mat-card-header>
         <img
-          loading="lazy"
           src="/assets/images/otherProducts/Keto Bar.jpg"
           alt="Keto Bar"
           class="menu-image"
@@ -224,7 +223,6 @@ muffins
           <mat-card-title>Muffins</mat-card-title>
         </mat-card-header>
         <img
-          loading="lazy"
           src="/assets/images/muffins/Muffins.jpg"
           alt="Keto Bar"
           class="menu-image"

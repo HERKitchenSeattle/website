@@ -42,11 +42,13 @@ import {
   AngularFirePerformanceModule,
   PerformanceMonitoringService,
 } from '@angular/fire/performance';
-import { LazyLoadImagesDirective } from './lazy-load-images.directive';
+
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ErrorDialogComponent } from './contact-button/button-dialog/error-dialog/error-dialog.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { ScrollingModule } from '@angular/cdk/scrolling';
+
+import { DirectivesModule } from './directives/directives.module';
+import { MdbModule } from 'mdb-angular-ui-kit';
 
 //change the keys in main.ts, app.module.ts, environment.ts, and environment.prod.ts.
 const firebaseConfig = {
@@ -76,14 +78,13 @@ const firebaseConfig = {
     ContactButtonComponent,
     ButtonDialogComponent,
     SecondDialogComponent,
-    LazyLoadImagesDirective,
+
     ErrorDialogComponent,
   ],
   imports: [
     BrowserModule,
 
-    ScrollingModule,
-
+    DirectivesModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -103,12 +104,14 @@ const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirePerformanceModule,
     AngularFirestoreModule,
+
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000',
     }),
+    MdbModule,
     // AngularFireModule.initializeApp(firebaseConfig),
   ],
 

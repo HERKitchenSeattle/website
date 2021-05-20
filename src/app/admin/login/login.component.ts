@@ -3,7 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import firebase from 'firebase/app';
-import $ from 'jquery';
+
 import { Title } from '@angular/platform-browser';
 import { first } from 'rxjs/operators';
 const perf = firebase.performance();
@@ -14,12 +14,18 @@ const perf = firebase.performance();
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+  // input values
+  emailVal!: string;
+  passwordVal!: string;
+
   constructor(
     public auth: AngularFireAuth,
     private activatedRoute: ActivatedRoute,
     private titleService: Title
   ) {
-    $('.goToDash').hide();
+    if (typeof document !== undefined) {
+      document.getElementById('goToDash')!.style.display = 'none';
+    }
   }
   email = new FormControl('', [Validators.required, Validators.email]);
 
@@ -44,10 +50,10 @@ export class LoginComponent implements OnInit {
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
   resetPassword() {
-    if ($('.email').val()) {
-      let email = $('.email').val();
+    if (this.emailVal) {
+      let email = this.emailVal;
       this.auth
-        .sendPasswordResetEmail(email as string)
+        .sendPasswordResetEmail(email)
         .then(() => {
           this.message = 'sent!';
           this.errCode = '';
@@ -76,22 +82,23 @@ export class LoginComponent implements OnInit {
       this.message = 'Signed in!!';
     } else {
       this.message = '';
-      $('.goToDash').css('display', 'none');
+
+      document.getElementById('goToDash')!.style.display = 'none';
     }
     this.auth.onAuthStateChanged((user) => {
       if (!user) {
-        $('.goToDash').css('display', 'none');
+        document.getElementById('goToDash')!.style.display = 'none';
       } else if (user) {
         window.location.href = '/#/admin';
       }
     });
-    $(document).on('keypress', (e) => {
+    document.addEventListener('keypress', (e) => {
       if (e.keyCode === 13) {
         e.preventDefault();
-        let email = $('.email').val();
-        let password = $('.password').val();
+        let email = this.emailVal;
+        let password = this.passwordVal;
         this.auth
-          .signInWithEmailAndPassword(email as string, password as string)
+          .signInWithEmailAndPassword(email, password)
           .then(async (user) => {
             console.log(user);
 
@@ -135,58 +142,62 @@ export class LoginComponent implements OnInit {
       if (user) {
         this.message = 'Signed in!';
         this.errCode = '';
-        $('.goToDash').show();
-        $('.signInButton').hide();
+
+        document.getElementById('goToDash')!.style.display = 'inline-block';
+
+        document.getElementById('signInButton')!.style.display = 'none';
         // this.router.navigateByUrl('console/dashboard');
       } else {
         return;
       }
     });
-    $('form.login').on('submit', (event) => {
-      const trace = perf.trace('userLogin');
+    document
+      .querySelectorAll('form.login')[0]
+      .addEventListener('submit', (event) => {
+        const trace = perf.trace('userLogin');
 
-      trace.start();
-      event.preventDefault();
-      try {
-        let email = $('.email').val();
-        let password = $('.password').val();
+        trace.start();
+        event.preventDefault();
+        try {
+          let email = this.emailVal;
+          let password = this.passwordVal;
 
-        this.auth
-          .signInWithEmailAndPassword(email as string, password as string)
-          .then(async (user) => {
-            console.log(user);
-            trace.putAttribute('verified', `${user.user?.emailVerified}`);
-            if (!user.user?.emailVerified) {
-              (await this.auth.currentUser)
-                ?.sendEmailVerification()
-                .then(() => {
-                  console.log('sent!');
-                  this.message =
-                    'Your email is not verified; we sent an email to you.';
-                  this.errCode = '';
-                });
-            } else {
-              this.message = 'signed in!!';
-              this.errCode = '';
-              this.auth
-                .setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-                .then(() => {
-                  return this.auth.signInWithEmailAndPassword(
-                    email as string,
-                    password as string
-                  );
-                });
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-            this.message = err.message;
-            this.errCode = err.code;
-            trace.putAttribute('errorCode', err.code);
-          });
-      } catch (error) {}
+          this.auth
+            .signInWithEmailAndPassword(email as string, password as string)
+            .then(async (user) => {
+              console.log(user);
+              trace.putAttribute('verified', `${user.user?.emailVerified}`);
+              if (!user.user?.emailVerified) {
+                (await this.auth.currentUser)
+                  ?.sendEmailVerification()
+                  .then(() => {
+                    console.log('sent!');
+                    this.message =
+                      'Your email is not verified; we sent an email to you.';
+                    this.errCode = '';
+                  });
+              } else {
+                this.message = 'signed in!!';
+                this.errCode = '';
+                this.auth
+                  .setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+                  .then(() => {
+                    return this.auth.signInWithEmailAndPassword(
+                      email as string,
+                      password as string
+                    );
+                  });
+              }
+            })
+            .catch((err) => {
+              console.log(err);
+              this.message = err.message;
+              this.errCode = err.code;
+              trace.putAttribute('errorCode', err.code);
+            });
+        } catch (error) {}
 
-      trace.stop();
-    });
+        trace.stop();
+      });
   }
 }

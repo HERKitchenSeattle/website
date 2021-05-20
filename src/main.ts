@@ -1,9 +1,10 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import imagemin from 'imagemin';
-import imageminWebp from 'imagemin-webp';
+
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
+
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 if (environment.production) {
   enableProdMode();

@@ -16,9 +16,11 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire';
 import { firebaseConfig } from '../../main';
+import { DetailComponent } from './detail/detail.component';
+import { DirectivesModule } from '../directives/directives.module';
 
 @NgModule({
-  declarations: [MenuComponent],
+  declarations: [MenuComponent, DetailComponent],
   imports: [
     CommonModule,
     MenuRoutingModule,
@@ -27,6 +29,7 @@ import { firebaseConfig } from '../../main';
     MatButtonModule,
     MatTreeModule,
     MatIconModule,
+    DirectivesModule,
     MatDividerModule,
     MatListModule,
     MatDialogModule,

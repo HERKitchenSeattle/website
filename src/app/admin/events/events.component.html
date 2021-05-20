@@ -5,21 +5,21 @@
   <form class="example-form">
     <mat-form-field class="example-full-width">
       <mat-label>Event name</mat-label>
-      <input matInput class="name-form" />
+      <input [(ngModel)]="name" matInput class="name-form" />
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
       <mat-label>Description</mat-label>
-      <input matInput class="description-form" />
+      <input [(ngModel)]="description" matInput class="description-form" />
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
       <mat-label>Location</mat-label>
-      <input matInput class="location-form" />
+      <input [(ngModel)]="location" matInput class="location-form" />
     </mat-form-field>
     <mat-form-field class="example-full-width">
       <mat-label>Full address</mat-label>
-      <input matInput class="address-form" />
+      <input [(ngModel)]="address" matInput class="address-form" />
     </mat-form-field>
     <table>
       <tr>
@@ -27,6 +27,7 @@
           <mat-form-field class="example-full-width">
             <mat-label>Start date</mat-label>
             <input
+              [(ngModel)]="startDate"
               class="start-date-form"
               matInput
               [matDatepicker]="startPicker"
@@ -41,7 +42,12 @@
         <td>
           <mat-form-field class="example-full-width">
             <mat-label>End date</mat-label>
-            <input class="end-date-form" matInput [matDatepicker]="endPicker" />
+            <input
+              [(ngModel)]="endDate"
+              class="end-date-form"
+              matInput
+              [matDatepicker]="endPicker"
+            />
             <mat-datepicker-toggle
               matSuffix
               [for]="endPicker"
@@ -53,12 +59,12 @@
     </table>
     <mat-form-field class="example-full-width">
       <mat-label>Other time info (optional)</mat-label>
-      <input matInput class="time-info-form" />
+      <input [(ngModel)]="timeInfo" matInput class="time-info-form" />
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
       <mat-label>Image (optional)</mat-label>
-      <input matInput class="image-form" />
+      <input [(ngModel)]="image" matInput class="image-form" />
     </mat-form-field>
   </form>
   <button mat-flat-button color="accent" (click)="createEventFromData()">
@@ -81,6 +87,7 @@
         [formControl]="myControl"
         [matAutocomplete]="auto"
         matInput
+        [(ngModel)]="key"
         class="key-form"
       />
       <mat-autocomplete #auto="matAutocomplete">
@@ -94,7 +101,7 @@
     </mat-form-field>
     <mat-form-field class="example-full-width">
       <mat-label>to this value</mat-label>
-      <input matInput class="value-form" />
+      <input [(ngModel)]="value" matInput class="value-form" />
     </mat-form-field>
   </form>
   <button mat-flat-button color="accent" (click)="updateEvent()">Update</button>
@@ -104,7 +111,7 @@
   <form>
     <mat-form-field class="example-quarter-width">
       <mat-label>Event ID</mat-label>
-      <input class="delete-form" required matInput />
+      <input [(ngModel)]="eventDelete" class="delete-form" required matInput />
     </mat-form-field>
     <br />
     <button mat-flat-button color="accent" (click)="deleteEvent()">

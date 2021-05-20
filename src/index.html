@@ -1,6 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta charset="utf-8" />
+    <script>
+      if (window) {
+        function detectIE() {
+          const ua = window.navigator.userAgent;
+
+          // Test values; Uncomment to check result …
+
+          // IE 10
+          // ua = 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)';
+
+          // IE 11
+          // ua = 'Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko';
+
+          // Edge 12 (Spartan)
+          // ua = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36 Edge/12.0';
+
+          // Edge 13
+          // ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586';
+
+          // NOTE: 2014
+          // const msie = ua.indexOf('MSIE ');
+          // if (msie > 0) {
+          //   // IE 10 or older => return version number
+          //   return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+          // }
+
+          // const trident = ua.indexOf('Trident/');
+          // if (trident > 0) {
+          //   // IE 11 => return version number
+          //   const rv = ua.indexOf('rv:');
+          //   return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+          // }
+
+          // NOTE: 2019
+          const ie = /\b(MSIE |Trident.*?rv:)(\d+)/.exec(ua);
+          if (ie) {
+            return parseInt(ie[2], 10);
+          }
+
+          const edge = ua.indexOf('Edge/');
+          if (edge > 0) {
+            // Edge (IE 12+) => return version number
+            return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+          }
+
+          // Other browser
+          return false;
+        }
+        if (detectIE()) {
+          document
+            .querySelector('her-kitchen')
+            .setAttribute('style', 'display: none;');
+        }
+      }
+    </script>
     <!-- Google Tag Manager -->
     <script>
       (function (w, d, s, l, i) {
@@ -15,13 +71,6 @@
       })(window, document, 'script', 'dataLayer', 'GTM-MV8THZX');
     </script>
     <!-- End Google Tag Manager -->
-    <meta charset="utf-8" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
-      crossorigin="anonymous"
-    />
 
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap"
@@ -33,10 +82,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="assets/images/s-icon.png" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap;ital,wght@1,200,300,400&display=swap"
-      rel="stylesheet"
-    />
+    <link href="assets/roboto.css" rel="stylesheet" />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
@@ -190,7 +236,8 @@
       media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
     />
     <link href="assets/purple-green.css" rel="stylesheet" />
-  </head>
+      <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600&display=swap" rel="stylesheet">
+</head>
   <body class="mat-typography docs-app-background">
     <!-- Google Tag Manager (noscript) -->
     <noscript
@@ -204,11 +251,7 @@
     <!-- End Google Tag Manager (noscript) -->
     <her-kitchen>HER Kitchen Seattle</her-kitchen>
     <noscript>A Vegan and gluten free bakery based in Washington</noscript>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
-      crossorigin="anonymous"
-    ></script>
+
     <link href="assets/purple-green.css" rel="stylesheet" />
     <link href="assets/real-purple-green.css" rel="stylesheet" />
   </body>

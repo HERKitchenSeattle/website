@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ButtonDialogComponent } from './button-dialog/button-dialog.component';
-import $ from 'jquery';
 
 /**
  * @title Contact button
@@ -20,15 +19,17 @@ export class ContactButtonComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (
-      parseInt(window.localStorage.getItem('xm')!.toString()) <
-      new Date().getTime()
-    ) {
-      $('#enabled-contact').css('display', 'block');
-      $('#disabled-contact').css('display', 'none');
-    } else {
-      $('#enabled-contact').css('display', 'none');
-      $('#disabled-contact').css('display', 'block');
+    if (typeof document !== undefined) {
+      if (
+        parseInt(window.localStorage.getItem('xm')!.toString()) <
+        new Date().getTime()
+      ) {
+        document.getElementById('enabled-contact')!.style.display = 'fixed';
+        document.getElementById('disabled-contact')!.style.display = 'none';
+      } else {
+        document.getElementById('enabled-contact')!.style.display = 'none';
+        document.getElementById('disabled-contact')!.style.display = 'fixed';
+      }
     }
   }
 }

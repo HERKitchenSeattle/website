@@ -1,30 +1,27 @@
 @use '~@angular/material' as mat;
-@import '~@angular/material/theming';
 
 @include mat.core();
-
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$angular-version-primary: mat.define-palette(mat.$yellow-palette);
-$angular-version-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$her-primary: mat.define-palette(mat.$yellow-palette);
+$her-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$angular-version-warn: mat.define-palette(mat.$red-palette);
+$her-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$angular-version-theme: mat.define-light-theme(
+$her-theme: mat.define-light-theme(
   (
     color: (
-      primary: $angular-version-primary,
-      accent: $angular-version-accent,
-      warn: $angular-version-warn,
-      pdark: mat.get-color-from-palette($angular-version-primary, 600),
+      primary: $her-primary,
+      accent: $her-accent,
+      warn: $her-warn,
     ),
   )
 );
-$primary: mat.get-color-from-palette($angular-version-primary);
-$accent: mat.get-color-from-palette($angular-version-accent);
-$warn: mat.get-color-from-palette($angular-version-warn);
-@include mat.all-component-themes($angular-version-theme);
+$primary: mat.get-color-from-palette($her-primary);
+$accent: mat.get-color-from-palette($her-accent);
+$warn: mat.get-color-from-palette($her-warn);
+@include mat.all-component-themes($her-theme);

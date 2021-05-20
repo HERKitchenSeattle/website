@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { MatDialog } from '@angular/material/dialog';
 
-import $ from 'jquery';
 import { first } from 'rxjs/operators';
 import { DialogComponent } from './dialog/dialog.component';
 
@@ -76,26 +75,26 @@ export class NavbarComponent implements OnInit {
     const user = await this.isLoggedIn();
     if (user) {
       this.signedIn = true;
-      $('.profile-stuff').css('display', 'block');
+      document.getElementById('profile-stuff')!.style.display = 'block';
     } else {
       this.signedIn = false;
-      $('.profile-stuff').css('display', 'none');
+      document.getElementById('profile-stuff')!.style.display = 'none';
     }
     this.auth.onAuthStateChanged(
       (user) => {
         if (user) {
           this.signedIn = true;
-          $('.profile-stuff').css('display', 'block');
+          document.getElementById('profile-stuff')!.style.display = 'block';
         } else {
           this.signedIn = false;
-          $('.profile-stuff').css('display', 'none');
+          document.getElementById('profile-stuff')!.style.display = 'none';
         }
       },
       (err) => {
         this.signedIn = false;
         console.log(err);
 
-        $('.profile-stuff').css('display', 'none');
+        document.getElementById('profile-stuff')!.style.display = 'none';
       }
     );
   }

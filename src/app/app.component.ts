@@ -1,15 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import {
-  NavigationEnd,
-  NavigationStart,
-  Router,
-  RouterEvent,
-} from '@angular/router';
-import $ from 'jquery';
-import { interval } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, NavigationStart, Router } from '@angular/router';
+
 import { UpdateService } from './update.service';
 
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'her-kitchen',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
@@ -28,27 +23,10 @@ export class AppComponent implements OnInit {
       }
     });
     this.sw.checkForUpdates();
-    if (!window.localStorage.getItem('theme')) {
-      $('*').attr('theme', 'dark');
-    } else if (window.localStorage.getItem('theme') == 'light') {
-      $('*').attr('theme', 'light');
-    } else if (window.localStorage.getItem('theme') == 'dark') {
-      $('*').attr('theme', 'dark');
-    }
-    interval(300).subscribe(() => {
-      // console.log('storage was changed');
-
-      if (!window.localStorage.getItem('theme')) {
-        $('*').attr('theme', 'dark');
-      } else if (window.localStorage.getItem('theme') == 'light') {
-        $('*').attr('theme', 'light');
-      } else if (window.localStorage.getItem('theme') == 'dark') {
-        $('*').attr('theme', 'dark');
-      }
-    });
   }
 
   ngOnInit() {
-    window.localStorage.setItem('xm', new Date().getTime().toString());
+    if (typeof window !== undefined)
+      window.localStorage.setItem('xm', new Date().getTime().toString());
   }
 }

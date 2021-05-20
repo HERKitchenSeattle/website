@@ -16,30 +16,7 @@ export class FooterComponent implements OnInit {
   public onClick(elementId: string): void {
     this.viewportScroller.scrollToAnchor(elementId);
   }
-  toggleTheme() {
-    if (window.localStorage.getItem('theme') == 'light') {
-      this.darkMode = false;
-    } else if (window.localStorage.getItem('theme') == 'dark') {
-      this.darkMode = true;
-    } else if (!window.localStorage.getItem('theme')) {
-      this.darkMode = true;
-    }
-    if (
-      !window.localStorage.getItem('theme') ||
-      window.localStorage.getItem('theme') == 'dark'
-    ) {
-      window.localStorage.setItem('theme', 'light');
-    } else if (window.localStorage.getItem('theme') == 'light') {
-      window.localStorage.setItem('theme', 'dark');
-    }
-  }
-  ngOnInit(): void {
-    if (window.localStorage.getItem('theme') == 'light') {
-      this.darkMode = false;
-    } else if (window.localStorage.getItem('theme') == 'dark') {
-      this.darkMode = true;
-    } else if (!window.localStorage.getItem('theme')) {
-      this.darkMode = true;
-    }
-  }
+
+  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
+  ngOnInit(): void {}
 }
