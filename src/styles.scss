@@ -10,22 +10,10 @@
 @import '~@fortawesome/fontawesome-free/scss/regular.scss';
 @import '~@fortawesome/fontawesome-free/scss/brands.scss'; // MDB SCSS
 @import '~mdb-angular-ui-kit/assets/scss/mdb.scss';
-$utilities: map-merge(
-  $utilities,
-  (
-    'color': (
-      property: color,
-      class: color,
-      values: (
-        0: #000,
-        25: #464646,
-        50: #808080,
-        75: rgb(182, 182, 182),
-        100: #ffffff,
-      ),
-    ),
-  )
-);
+
+.mat-app-background {
+  background: #303030;
+}
 
 [color='dark'] {
   color: #200f09;
