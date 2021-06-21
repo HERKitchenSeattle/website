@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
@@ -6,8 +6,8 @@ import { Meta, Title } from '@angular/platform-browser';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
-  public constructor(private titleService: Title, public meta: Meta) {
+export class HomeComponent {
+  constructor(private titleService: Title, public meta: Meta) {
     this.meta.updateTag({ name: 'robots', content: 'index' });
     this.setTitle('Home');
     window.history.pushState('string', '', '/');
@@ -16,8 +16,7 @@ export class HomeComponent implements OnInit {
       content: 'A vegan and gluten free bakery based in Seattle, Washington.',
     });
   }
-  public setTitle(newTitle: string) {
+  setTitle(newTitle: string) {
     this.titleService.setTitle(`${newTitle} - HER Kitchen Seattle`);
   }
-  ngOnInit(): void {}
 }

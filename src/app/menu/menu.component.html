@@ -1,9 +1,11 @@
-<main class="main">
+<main id="menu-main" class="main">
   <h1>Menu</h1>
   <h2 class="mat-warn">Minimum order of 6 per product.</h2>
   <h2>
-    You can place an order on our Facebook: <br />
-    <a target="_blank" routerLink="/facebook">Link to Facebook</a>
+    For orders, please message us on Facebook:<br />
+    <a color="accent" mat-flat-button target="_blank" routerLink="/facebook">
+      Link to Facebook
+    </a>
   </h2>
   <mat-accordion>
     <mat-expansion-panel
@@ -14,6 +16,7 @@
         <mat-panel-title>Cookies</mat-panel-title>
       </mat-expansion-panel-header>
       <a (click)="scroll('classic-cookie')" mat-list-item>Classic</a>
+      <br />
       <a (click)="scroll('shortbread-cookie')" mat-list-item>Shortbread</a>
     </mat-expansion-panel>
     <mat-expansion-panel
@@ -24,7 +27,9 @@
         <mat-panel-title>Bars</mat-panel-title>
       </mat-expansion-panel-header>
       <a (click)="scroll('dessert-bars')" mat-list-item>Dessert</a>
+      <br />
       <a (click)="scroll('oat-bars')" mat-list-item>Oat</a>
+      <br />
       <a (click)="scroll('keto-bars')" mat-list-item>Keto</a>
     </mat-expansion-panel>
     <mat-expansion-panel
@@ -39,7 +44,7 @@
   </mat-accordion>
   <br />
   <!-- Sections:
-  classic cookies, 
+  classic cookies,
 shortbread cookies,
 
 dessert bars
@@ -122,15 +127,67 @@ muffins
             {{ cookie.name }}
           </mat-card-title>
         </mat-card-header>
+        <a
+          href="/assets/images/shortbreadCookies/{{ cookie.fileName }}.jpg"
+          target="_blank"
+        >
+          <img
+            src="/assets/images/shortbreadCookies/{{ cookie.fileName }}.jpg"
+            alt="{{ cookie.name }}"
+            class="menu-image"
+            height="200px"
+          />
+        </a>
+
+        <mat-card-content>
+          <p *ngIf="cookie.desc">{{ cookie.desc }}</p>
+          <p>{{ cookie.price }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </section>
+  <div class="item-header" id="dessert-bars">
+    <h2>Dessert Bars</h2>
+    <h3>
+      HER Kitchen’s original cookie recipe. Short bread cookies flavored with
+      superfood ingredients in a little dome shaped cookie.
+    </h3>
+    <mat-divider></mat-divider>
+  </div>
+  <section class="menu-grid dessert-bar-grid">
+    <div
+      *ngFor="let bar of dessertBars; index as i"
+      class="menu-card dessert-bar-card"
+      id="{{ bar.name.toLowerCase().replace(' ', '-').replace('\'', '') }}-card"
+    >
+      <mat-card style="width: 300px" class="material-menu-card">
+        <mat-card-header>
+          <mat-card-title>
+            {{ bar.name }}
+          </mat-card-title>
+        </mat-card-header>
+        <a
+          *ngIf="bar.image !== false"
+          target="_blank"
+          href="/assets/images/dessertBars/{{ bar.fileName }}.jpg"
+          ><img
+            src="/assets/images/dessertBars/{{ bar.fileName }}.jpg"
+            alt="{{ bar.name }}"
+            class="menu-image"
+            height="200px"
+          />
+        </a>
+
         <img
-          src="/assets/images/shortbreadCookies/{{ cookie.fileName }}.jpg"
-          alt="{{ cookie.name }}"
+          *ngIf="bar.image === false"
+          src="/assets/images/noImage.png"
+          alt="Image coming soon"
           class="menu-image"
           height="200px"
         />
         <mat-card-content>
-          <p *ngIf="cookie.desc">{{ cookie.desc }}</p>
-          <p>{{ cookie.price }}</p>
+          <p *ngIf="bar.desc">{{ bar.desc }}</p>
+          <p>{{ bar.price }}</p>
         </mat-card-content>
       </mat-card>
     </div>
@@ -155,15 +212,20 @@ muffins
             {{ bar.name }}
           </mat-card-title>
         </mat-card-header>
+        <a
+          *ngIf="bar.image !== false"
+          target="_blank"
+          href="/assets/images/oatBars/{{ bar.fileName }}.jpg"
+          ><img
+            src="/assets/images/oatBars/{{ bar.fileName }}.jpg"
+            alt="{{ bar.name }}"
+            class="menu-image"
+            height="200px"
+          />
+        </a>
+
         <img
-          *ngIf="bar.image != false"
-          src="/assets/images/oatBars/{{ bar.fileName }}.jpg"
-          alt="{{ bar.name }}"
-          class="menu-image"
-          height="200px"
-        />
-        <img
-          *ngIf="bar.image == false"
+          *ngIf="bar.image === false"
           src="/assets/images/noImage.png"
           alt="Image coming soon"
           class="menu-image"
@@ -191,11 +253,14 @@ muffins
         <mat-card-header>
           <mat-card-title> Keto Bar </mat-card-title>
         </mat-card-header>
-        <img
-          src="/assets/images/otherProducts/Keto Bar.jpg"
-          alt="Keto Bar"
-          class="menu-image"
-        />
+        <a href="/assets/images/otherProducts/Keto Bar.jpg" target="_blank"
+          ><img
+            src="/assets/images/otherProducts/Keto Bar.jpg"
+            alt="Keto Bar"
+            class="menu-image"
+          />
+        </a>
+
         <mat-card-content>
           <p>A keto nut bar</p>
           <p></p>
@@ -217,11 +282,14 @@ muffins
         <mat-card-header>
           <mat-card-title>Muffins</mat-card-title>
         </mat-card-header>
-        <img
-          src="/assets/images/muffins/Muffins.jpg"
-          alt="Keto Bar"
-          class="menu-image"
-        />
+        <a href="/assets/images/muffins/Muffins.jpg" target="_blank"
+          ><img
+            src="/assets/images/muffins/Muffins.jpg"
+            alt="Keto Bar"
+            class="menu-image"
+          />
+        </a>
+
         <mat-card-content>
           <p>Flavors</p>
           <p></p>

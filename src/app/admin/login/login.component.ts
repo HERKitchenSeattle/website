@@ -17,7 +17,6 @@ export class LoginComponent implements OnInit {
   // input values
   emailVal!: string;
   passwordVal!: string;
-
   constructor(
     public auth: AngularFireAuth,
     private activatedRoute: ActivatedRoute,
@@ -32,7 +31,6 @@ export class LoginComponent implements OnInit {
     }
   }
   email = new FormControl('', [Validators.required, Validators.email]);
-
   hide = true;
   message!: string;
   errCode: string = '';
@@ -40,7 +38,7 @@ export class LoginComponent implements OnInit {
     this.hide = !this.hide;
   }
   login() {
-    this.auth.signInWithEmailAndPassword;
+    this.auth.signInWithEmailAndPassword(this.emailVal, this.passwordVal);
   }
   isLoggedIn() {
     return this.auth.authState.pipe(first()).toPromise();
@@ -96,8 +94,9 @@ export class LoginComponent implements OnInit {
         window.location.href = '/#/admin';
       }
     });
-    document.addEventListener('keypress', (e) => {
-      if (e.keyCode === 13) {
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key == 'Enter') {
         e.preventDefault();
         let email = this.emailVal;
         let password = this.passwordVal;

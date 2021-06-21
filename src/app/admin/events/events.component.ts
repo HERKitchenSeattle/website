@@ -19,7 +19,7 @@ export function actualDeleteEvent(ID: string) {
     .delete();
 }
 @Component({
-  selector: 'app-dashboard',
+  selector: 'app-events',
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.scss'],
 })
@@ -30,6 +30,7 @@ export class EventsComponent implements OnInit {
   name: string = '';
 
   description: string = '';
+  infoLink: string = '';
   location: string = '';
   address: string = '';
   startDate: string = '';
@@ -60,13 +61,17 @@ export class EventsComponent implements OnInit {
     if (!this.eventDelete || this.eventDelete == '') {
       this.deleteMessage = 'You have to provide an ID.';
     } else {
-      this.dialog.open(DeleteConfirmComponent);
+      this.dialog.open(DeleteConfirmComponent, {
+        data: {
+          id: this.eventDelete,
+        },
+      });
     }
   }
 
   filteredOptions!: Observable<string[]>;
-  campaignOne: FormGroup;
-  campaignTwo: FormGroup;
+  campaignOne!: FormGroup;
+  campaignTwo!: FormGroup;
   constructor(
     private router: Router,
     public auth: AngularFireAuth,
@@ -109,8 +114,8 @@ export class EventsComponent implements OnInit {
     end: new FormControl(),
   });
   message = '';
-  signOut() {
-    if (this.auth.currentUser) {
+  async signOut() {
+    if (await this.auth.currentUser) {
       this.auth
         .signOut()
         .then(() => {
@@ -130,10 +135,12 @@ export class EventsComponent implements OnInit {
         this.startDate,
         this.endDate,
         this.description,
+
         this.location,
         this.address,
         this.image,
-        this.timeInfo
+        this.timeInfo,
+        this.infoLink
       );
     }
   }
@@ -160,10 +167,12 @@ export class EventsComponent implements OnInit {
     startDate: any,
     endDate: any,
     description: string,
+
     location: string,
     address: string,
     imageUrl?: string,
-    otherTimeStuff?: string
+    otherTimeStuff?: string,
+    infoLink?: string
   ) {
     this.db
       .collection('events')
@@ -176,6 +185,7 @@ export class EventsComponent implements OnInit {
         address: address,
         imageUrl: imageUrl,
         otherTimeStuff: otherTimeStuff,
+        infoLink: infoLink,
       })
       .then((docRef) => {
         console.log(`Document written with ID: ${docRef.id}`);
@@ -186,7 +196,6 @@ export class EventsComponent implements OnInit {
         console.error(`Error adding document: ${err}`);
       });
   }
-
   ngOnInit(): void {
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),

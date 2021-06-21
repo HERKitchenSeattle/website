@@ -18,14 +18,6 @@ tr.example-detail-row {
   height: 0;
 }
 
-tr.example-message-row:not(.example-expanded-row):hover {
-  background: whitesmoke;
-}
-
-tr.example-message-row:not(.example-expanded-row):active {
-  background: #efefef;
-}
-
 .example-message-row td {
   border-bottom-width: 0;
 }

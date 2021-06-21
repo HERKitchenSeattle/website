@@ -1,7 +1,32 @@
+@use '~@material/ripple';
 #account-circle {
   font-size: 38px;
 }
 
+header {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  top: 0px;
+}
+.navbar-placeholder {
+  height: 80px;
+  width: 100%;
+}
+.mat-toolbar.mat-primary {
+  // 255, 235, 59
+  background: #ffe925e6;
+}
+// #top {
+//   position: fixed;
+//   top: 0;
+//   transition: top 0.3s;
+//   z-index: 56478093476458390;
+// }
+
+#top {
+  transition: box-shadow 0.3s;
+}
 a.navbar-brand {
   display: flex;
   text-align: center;
@@ -72,6 +97,11 @@ a.navbar-brand {
   flex: 1 0 33%;
   align-items: center;
   -webkit-box-flex: 1;
+  [mat-icon-button] {
+    $button-margin: 15px;
+    margin-left: $button-margin;
+    margin-right: $button-margin;
+  }
 }
 .dark-mode-button {
   display: flex;

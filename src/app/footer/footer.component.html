@@ -1,41 +1,98 @@
 <footer>
-  <span>
-    <span class="sr-only"
-      >A vegan and gluten free bakery based in Seattle, Washington.</span
-    >
-    <h3><a (click)="scrollToTop()" class="topLink">Scroll to Top</a></h3>
+  <div class="footer-grid">
+    <div></div>
+    <div>
+      <span>
+        <h1 style="margin-left: -20px">
+          <a routerLink="/"
+            ><img src="/assets/images/icon-no-kitchen.png" height="80"
+          /></a>
+          HER Kitchen
+        </h1>
+        <h3>A vegan and gluten free bakery based in Seattle, Washington.</h3>
+        <h3>
+          <a
+            (click)="scrollToTop()"
+            class="topLink"
+            style="
+              user-select: none;
+              -ms-user-select: none;
+              -webkit-user-select: none;
+              -moz-user-select: none;
+            "
+            >Scroll to Top</a
+          >
+        </h3>
+        <div class="break"></div>
+        <h4>© {{ year }} HER Kitchen Seattle <br /></h4>
+        <div class="break"></div>
+        <h3 style="margin-bottom: 5px">This website is open source.</h3>
 
-    <h4>© {{ year }} HER Kitchen Seattle</h4>
-    <h3>Social Media:</h3>
-    <h4>
-      <a
-        href="https://herkitchenseattle.com/facebook"
-        target="_blank"
-        class="fb"
-        >Facebook</a
-      >
-      <a
-        href="https://herkitchenseattle.com/instagram"
-        target="_blank"
-        class="insta"
-        >Instagram</a
-      >
-    </h4>
-    <h3>This website is open source.</h3>
-    <h4>
-      <a href="https://github.com/HERKitchenSeattle/website" target="_blank"
-        ><i class="github-logo"></i>View project on GitHub</a
-      >
-    </h4>
-    <h3>Links:</h3>
-    <h4 class="links">
-      <a (click)="scrollToTop()" routerLink="/">Home</a>
-      <a (click)="scrollToTop()" routerLink="/about">About</a>
-      <a (click)="scrollToTop()" routerLink="/menu">Menu</a>
-      <a (click)="scrollToTop()" routerLink="/events">Events</a>
-      <a (click)="scrollToTop()" routerLink="/contact">Contact</a>
-      <br />
-      <a (click)="scrollToTop()" routerLink="/admin/login">Admin</a>
-    </h4>
-  </span>
+        <a
+          href="https://github.com/HERKitchenSeattle/website"
+          target="_blank"
+          rel="noreferrer"
+          >View project on GitHub
+        </a>
+        <div class="break" style="margin-bottom: 25px"></div>
+        <h6>
+          Bootstrap Version: {{ bootstrap_version }} Angular Version:
+          {{ ng_version.full }} AngularFire2 Version: {{ ng_fire_version.full }}
+        </h6>
+
+        <div class="break"></div>
+        <h6>
+          <a (click)="scrollToTop()" routerLink="/admin/login">Admin login</a>
+        </h6>
+      </span>
+    </div>
+    <div>
+      <h2>Links:</h2>
+
+      <h4 class="links">
+        <!-- <a (click)="scrollToTop()" routerLink="/branding">Branding</a> -->
+        <a (click)="scrollToTop()" routerLink="/">Home</a>
+        <a (click)="scrollToTop()" routerLink="/about">About</a>
+        <a (click)="scrollToTop()" routerLink="/menu">Menu</a>
+        <a (click)="scrollToTop()" routerLink="/events">Events</a>
+        <a (click)="scrollToTop()" routerLink="/contact">Contact</a>
+        <!-- <a (click)="scrollToTop()" routerLink="/changelog">Changelog</a> -->
+      </h4>
+    </div>
+    <div>
+      <h2>Social Media:</h2>
+      <ul class="list-unstyled">
+        <li class="mb-2">
+          <a href="/#/facebook" target="_blank" class="fb"> Facebook </a>
+        </li>
+        <li class="mb-2">
+          <a href="/#/instagram" target="_blank"> Instagram </a>
+        </li>
+        <!-- <li class="mb-2">
+          <a
+            href="https://github.com/HERKitchenSeattle/website"
+            target="_blank"
+            rel="noreferrer"
+            >View project on GitHub
+          </a>
+        </li> -->
+        <li class="mb-2">
+          <a href="/#/twitter" target="_blank"> Twitter </a>
+        </li>
+      </ul>
+    </div>
+    <div></div>
+  </div>
+  <div style="display: flex; margin-left: 25px">
+    <span
+      style="
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      "
+    >
+    </span>
+  </div>
 </footer>

@@ -2,11 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ButtonDialogComponent } from './button-dialog/button-dialog.component';
 
-/**
- * @title Contact button
- * @description the button that brings up a contact dialog
- * @deprecated Doesn't work for whatever reason
- */
 @Component({
   selector: 'app-contact-button',
   templateUrl: './contact-button.component.html',
@@ -17,32 +12,19 @@ export class ContactButtonComponent implements OnInit {
   openMessageDialog() {
     this.dialog.open(ButtonDialogComponent);
   }
+  enabled: boolean = false;
 
   ngOnInit(): void {
+    if (typeof window !== undefined && !window.localStorage.getItem('xm'))
+      window.localStorage.setItem('xm', new Date().getTime().toString());
     if (typeof window !== undefined) {
       if (
         parseInt(window.localStorage.getItem('xm')!.toString()) <
         new Date().getTime()
       ) {
-        document.querySelectorAll('#enabled-contact').forEach((el) => {
-          //@ts-ignore
-          el.style.display = 'fixed';
-        });
-
-        document.querySelectorAll('#disabled-contact').forEach((el) => {
-          //@ts-ignore
-          el.style.display = 'none';
-        });
+        this.enabled = true;
       } else {
-        document.querySelectorAll('#enabled-contact').forEach((el) => {
-          //@ts-ignore
-          el.style.display = 'none';
-        });
-
-        document.querySelectorAll('#disabled-contact').forEach((el) => {
-          //@ts-ignore
-          el.style.display = 'fixed';
-        });
+        this.enabled = false;
       }
     }
   }

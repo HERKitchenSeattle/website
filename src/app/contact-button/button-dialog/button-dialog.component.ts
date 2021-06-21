@@ -1,26 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { FormControl, Validators } from '@angular/forms';
+
 import { MatDialog } from '@angular/material/dialog';
-
-import { SecondDialogComponent } from './second-dialog/second-dialog.component';
-
-import { messageId, set } from './litterallyJustTheMessageId';
 import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
+import { set } from './litterallyJustTheMessageId';
+import { SecondDialogComponent } from './second-dialog/second-dialog.component';
 
 @Component({
   selector: 'app-button-dialog',
   templateUrl: './button-dialog.component.html',
   styleUrls: ['./button-dialog.component.scss'],
 })
-export class ButtonDialogComponent implements OnInit {
+export class ButtonDialogComponent {
   // input binding vars
   nameVal!: string;
   emailVal!: string;
   messageVal!: string;
 
   constructor(private db: AngularFirestore, private dialog: MatDialog) {}
-  email = new FormControl('', [Validators.required, Validators.email]);
+
   sendMessage() {
     if (
       parseInt(window.localStorage.getItem('xm')!.toString()) <
@@ -46,8 +44,7 @@ export class ButtonDialogComponent implements OnInit {
               .getTime()
               .toString()
           );
-          document.getElementById('enabled-contact')!.style.display = 'none';
-          document.getElementById('disabled-contact')!.style.display = 'fixed';
+
           set(docRef.id);
           this.dialog.open(SecondDialogComponent);
         })
@@ -57,6 +54,4 @@ export class ButtonDialogComponent implements OnInit {
         });
     }
   }
-  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
-  ngOnInit(): void {}
 }

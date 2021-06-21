@@ -1,28 +1,28 @@
 <main>
   <section class="example-button-container" id="enabled-contact">
+    <div
+      *ngIf="!enabled"
+      matTooltip="To prevent abuse, messages can only be sent once per day."
+    >
+      <button
+        aria-label="Message Us"
+        mat-fab
+        disabled
+        matTooltip="To prevent abuse, messages can only be sent once per day."
+      >
+        <mat-icon color="dark">question_answer</mat-icon>
+      </button>
+    </div>
+
     <button
-      (click)="openMessageDialog()"
+      aria-label="Message Us"
       matTooltip="Send us a message!"
       mat-fab
-      color="accent"
-      aria-label="Example icon button with a delete icon"
+      *ngIf="enabled"
+      (click)="openMessageDialog()"
     >
-      <span class="material-icons icon-question">question_answer</span>
+      <mat-icon color="dark">question_answer</mat-icon>
     </button>
   </section>
-
-  <section
-    class="example-button-container"
-    id="disabled-contact"
-    matTooltip="To prevent abuse, messages can only be sent once per day."
-  >
-    <button
-      mat-fab
-      disabled
-      color="accent"
-      aria-label="Example icon button with a delete icon"
-    >
-      <span class="material-icons icon-question">question_answer</span>
-    </button>
-  </section>
+  <section class="example-button-container" id="disabled-contact"></section>
 </main>

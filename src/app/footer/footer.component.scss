@@ -1,16 +1,45 @@
+@use '../../variables';
+
+.back-to-top {
+  background: darken(variables.$primary, 20%);
+  // a {
+  //   color: white;
+  // }
+}
 footer {
-  // background-color: #fbc02d;
   // width: 100%;
   padding-top: 25px;
   padding-bottom: 25px;
   height: fit-content;
   display: flex;
   text-align: center;
-  justify-content: center;
-  background: #ffeb3b;
+  flex-direction: column;
+  background: variables.$primary;
   width: 100%;
   color: #200f09;
   // margin-top: 25px;
+}
+.socials {
+  display: flex;
+  align-items: center;
+}
+// a[href="https://herkitchenseattle.com/#/instagram"]
+// {
+//   margin-top: 25px;
+//   padding-top: 10px;
+// }
+
+.break {
+  flex-basis: 100%;
+  height: 0;
+}
+.h5 {
+  font-size: 1.25rem;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
+  text-align: start;
 }
 .back-to-top-btn {
   position: absolute;
@@ -28,8 +57,8 @@ footer {
   display: flex;
   width: 100%;
   height: fit-content;
-  text-align: center;
-  justify-content: center;
+  // text-align: center;
+  // justify-content: center;
   margin-top: 25px;
 }
 .navFooterBackToTop {
@@ -51,9 +80,9 @@ footer {
 .topLink {
   cursor: pointer;
 }
-h4.links > a {
-  margin-left: 5px;
-  margin-right: 5px;
+h4.links {
+  display: flex;
+  flex-direction: column;
 }
 .github-logo {
   content: url('../../assets/github.svg');
@@ -71,4 +100,11 @@ i {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+.mobile .footer-grid {
+  display: flex !important;
+  text-align: center !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  align-content: center !important;
 }

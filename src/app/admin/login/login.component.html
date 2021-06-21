@@ -33,51 +33,51 @@
             />
           </mat-form-field>
           <br />
-          <button
-            [disableRipple]="true"
-            class="passwordButton"
-            color="accent"
-            mat-button
-            (click)="passwordToggle()"
-          >
-            {{ hide ? 'Show' : 'Hide' }} password
-          </button>
-          <br />
-          <button
-            class="signInButton g-recaptcha"
-            mat-flat-button
-            color="accent"
-            id="signInButton"
-          >
-            Log in
-          </button>
-          <button
-            routerLink="/admin"
-            mat-flat-button
-            id="goToDash"
-            color="accent"
-          >
-            Go to dashboard
-          </button>
-          <br />
-          <button
-            class="resetPasswordButton"
-            (click)="resetPassword()"
-            mat-button
-            color="accent"
-          >
-            Reset Password
-          </button>
-
-          <button
-            class="signOutButton"
-            routerLink="/admin/sign-out"
-            mat-button
-            color="accent"
-          >
-            Log out
-          </button>
         </form>
+        <button
+          class="passwordButton"
+          color="accent"
+          mat-button
+          (click)="passwordToggle()"
+        >
+          {{ hide ? 'Show' : 'Hide' }} password
+        </button>
+        <br />
+        <button
+          class="signInButton g-recaptcha"
+          mat-flat-button
+          color="accent"
+          id="signInButton"
+          (click)="login()"
+        >
+          Log in
+        </button>
+        <button
+          routerLink="/admin"
+          mat-flat-button
+          id="goToDash"
+          color="accent"
+        >
+          Go to dashboard
+        </button>
+        <br />
+        <button
+          class="resetPasswordButton"
+          (click)="resetPassword()"
+          mat-button
+          color="accent"
+        >
+          Reset Password
+        </button>
+
+        <button
+          class="signOutButton"
+          routerLink="/admin/sign-out"
+          mat-button
+          color="accent"
+        >
+          Log out
+        </button>
       </div>
 
       <span class="message">{{ message }}</span>

@@ -1,29 +1,85 @@
-@use "sass:color";
-/* You can add global styles to this file, and also import other style files */
-@use '~@angular/material' as mat;
+@charset 'utf-8';
 @use 'variables';
+@use 'sass:color';
+@use '~@angular/material' as mat;
 @include mat.core();
+
+@import '~bootstrap/scss/functions';
+
 @import '~bootstrap/scss/bootstrap';
-@import '~mdb-angular-ui-kit/assets/scss/mdb.scss';
-@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
-@import '~@fortawesome/fontawesome-free/scss/solid.scss';
-@import '~@fortawesome/fontawesome-free/scss/regular.scss';
-@import '~@fortawesome/fontawesome-free/scss/brands.scss'; // MDB SCSS
-@import '~mdb-angular-ui-kit/assets/scss/mdb.scss';
 
-.mat-app-background {
-  background: #303030;
+:root {
+  --bs-font-sans-serif: Roboto, 'Segoe UI', sans-serif;
+  --bs-font-monospace: 'Fira Code', SFMono, Consolas, monospace;
+}
+* {
+  scroll-behavior: smooth;
+}
+mat-card.mat-card {
+  display: grid;
+  place-items: center;
+}
+.mobile .footer-grid {
+  display: flex !important;
+  text-align: center !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  align-content: center !important;
 }
 
-[color='dark'] {
-  color: #200f09;
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: #f5f5f555;
 }
-.carousel-control-next-icon::after {
-  content: '\e5e1';
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  $thumb-color: #f48fb1;
+  background-color: $thumb-color;
+  &:hover {
+    background-color: darken($thumb-color, 10);
+  }
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #f5f5f5;
+  border-radius: 10px;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-image: none;
+  padding: 5px;
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 50px;
+  width: 50px;
+}
+.carousel-control-prev-icon::before {
   font-family: 'Material Icons';
+  content: '\e2ea';
+  font-size: 36px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-.carousel-control--icon::after .material-icons.md-dark {
-  color: #200f09;
+.carousel-control-next-icon::before {
+  font-family: 'Material Icons';
+  content: '\e5e1';
+  font-size: 36px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+::selection {
+  background: variables.$accent;
+  color: white;
+}
+::-moz-selection {
+  background: variables.$accent;
+  color: white;
 }
 
 html,
@@ -32,10 +88,15 @@ body {
 }
 body {
   margin: 0;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  font-family: Roboto, 'Helvetica Neue', 'Segoe UI', sans-serif;
 }
-body {
-  color: #fff;
+
+[color='dark'] {
+  color: #200f09;
+}
+
+.material-icons.md-dark {
+  color: #200f09;
 }
 a {
   color: variables.$accent;
@@ -45,10 +106,7 @@ a {
     text-decoration: underline;
   }
 }
-.mat-snack-bar-container {
-  background: #424242 !important;
-  color: #fff !important;
-}
+
 .mat-list-item-content {
   margin-bottom: 5px;
 }
@@ -64,52 +122,8 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   transition: background-color 5000s;
-  -webkit-text-fill-color: #fff !important;
 }
-.mat-card {
-  background: #424242 !important;
-  color: #fff !important;
-}
-.navbar {
-  position: -webkit-sticky !important;
-}
-.mat-card-subtitle {
-  color: hsla(0, 0%, 100%, 0.7) !important;
-}
-.mat-divider {
-  border-top-color: hsla(0, 0%, 100%, 0.12) !important;
-}
-.mat-option {
-  color: #fff !important;
-}
-.mat-flat-button.mat-accent,
-.mat-raised-button.mat-accent,
-.mat-fab.mat-accent,
-.mat-mini-fab.mat-accent {
-  color: rgba(0, 0, 0, 0.87) !important;
-}
+
 .mat-warn {
   color: variables.$warn;
-}
-.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
-  background-color: color.adjust(variables.$accent, $lightness: 20%) !important;
-}
-.mat-table {
-  background: #424242 !important;
-  color: #fff !important;
-}
-.mat-cell,
-.mat-footer-cell {
-  color: hsla(0, 0%, 100%, 0.7) !important;
-}
-tr.example-message-row:not(.example-expanded-row):hover {
-  background: #363636 !important;
-}
-mat-row,
-mat-header-row,
-mat-footer-row,
-th.mat-header-cell,
-td.mat-cell,
-td.mat-footer-cell {
-  color: hsla(0, 0%, 100%, 0.7) !important;
 }

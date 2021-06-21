@@ -42,14 +42,6 @@ tr {
   overflow: hidden;
 }
 
-.example-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
-}
-mat-card {
-  background: #424242 !important;
-  color: #fff !important;
-}
 button {
   margin: 10px;
 }
@@ -58,7 +50,6 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   transition: background-color 5000s;
-  -webkit-text-fill-color: #fff !important;
 }
 .passwordButton {
   padding: 0;

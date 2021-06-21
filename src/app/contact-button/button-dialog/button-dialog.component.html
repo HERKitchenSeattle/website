@@ -18,8 +18,9 @@
       <input
         required="true"
         [(ngModel)]="emailVal"
-        [formControl]="email"
+        type="email"
         matInput
+        email
         name="email"
         spellcheck="false"
         placeholder="Ex. johndoe@gmail.com"
@@ -43,8 +44,6 @@
 </div>
 <div mat-dialog-actions>
   <button
-    type="submit"
-    form="messageForm"
     value="Send"
     color="accent"
     mat-flat-button

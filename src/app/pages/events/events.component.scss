@@ -1,0 +1,57 @@
+@use '../../../variables';
+main {
+  margin-left: 10vh;
+  margin-right: 10vh;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+@media only screen and (max-width: 1200px) {
+  main {
+    margin: 25px 5vh 25px 5vh;
+  }
+}
+h1,
+h2,
+h3 {
+  text-align: center;
+}
+.example-card {
+  max-width: 400px;
+}
+
+mat-card {
+  margin-bottom: 10px;
+  max-width: 400px;
+  place-self: center;
+}
+img {
+  width: calc(100% + 32px);
+  margin: 0 -16px 16px -16px;
+}
+.event-grid {
+  display: grid;
+  gap: 3vh;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  justify-content: center;
+  align-items: center;
+}
+@media only screen and (max-width: 749px) {
+  .event-grid {
+    gap: calc(3vh);
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+  main {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .event-grid {
+    grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+  }
+}
+@media only screen and (max-width: 749px) {
+  .event-grid {
+    grid-template-columns: repeat(auto-fit, minmax(227px, 1fr));
+  }
+}

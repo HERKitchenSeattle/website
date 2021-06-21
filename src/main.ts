@@ -3,28 +3,24 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
-
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 if (environment.production) {
   enableProdMode();
 }
+
 platformBrowserDynamic()
   .bootstrapModule(AppModule)
-  .then(() => {
-    if ('serviceWorker' in navigator && environment.production) {
-      navigator.serviceWorker.register('ngsw-worker.js');
-    }
-  })
   .catch((err: Error) => console.error(err));
-//change the keys in main.ts, app.module.ts, environment.ts, and environment.prod.ts.
-export const firebaseConfig = {
-  apiKey: 'AIzaSyBouOK3qYFSPtttpQTIUPR6WDy0AlNvbNY',
-  authDomain: 'herkitchenseattle.firebaseapp.com',
-  databaseURL: 'https://herkitchenseattle-default-rtdb.firebaseio.com',
-  projectId: 'herkitchenseattle',
-  storageBucket: 'herkitchenseattle.appspot.com',
-  messagingSenderId: '532110473531',
-  appId: '1:532110473531:web:b6cdda638b727921d49f1e',
-  measurementId: 'G-1W9PF6P5JD',
-};
+
+if (
+  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  )
+) {
+  document.body.classList.add('mobile');
+} else {
+  document.body.classList.add('desktop');
+}
+// @ts-ignore
+// FB.CustomerChat.show(true);

@@ -1,5 +1,12 @@
-import { Product } from '../product';
-export function getProduct(product: string) {
+export interface Product {
+  name: string;
+  desc?: string;
+  price?: string;
+  fileName?: string;
+  image?: boolean;
+}
+
+export function fillProduct() {
   for (let cookie of classicCookies) {
     if (!cookie.fileName) {
       cookie.fileName = cookie.name;
@@ -27,16 +34,16 @@ export function getProduct(product: string) {
       cookie.price = '$2.00';
     }
   }
-  if (
-    product === 'shortbreadCookies' ||
-    'classicCookies' ||
-    'oatBars' ||
-    'muffins'
-  ) {
-    return eval(product);
+  for (let bar of dessertBars) {
+    if (!bar.fileName) {
+      bar.fileName = bar.name;
+    }
+    if (!bar.price) {
+      bar.price = '$3.50';
+    }
   }
 }
-const classicCookies: Product[] = [
+export const classicCookies: Product[] = [
   {
     name: 'Black Forest',
     desc: 'Chocolate and bing cherries',
@@ -124,7 +131,7 @@ const classicCookies: Product[] = [
     price: '$2.50',
   },
 ];
-const shortbreadCookies: Product[] = [
+export const shortbreadCookies: Product[] = [
   {
     name: 'Beet',
     price: '$2.00',
@@ -142,7 +149,7 @@ const shortbreadCookies: Product[] = [
     name: 'Orange',
   },
 ];
-const oatBars: Product[] = [
+export const oatBars: Product[] = [
   {
     name: 'Oat',
   },
@@ -160,8 +167,27 @@ const oatBars: Product[] = [
     name: 'Matcha',
   },
 ];
-const muffins: Product[] = [
+export const muffins: Product[] = [
   {
     name: 'Muffins',
+  },
+];
+export const dessertBars: Product[] = [
+  {
+    name: 'Lemon Bars',
+    fileName: 'Lemon Bar',
+  },
+  {
+    name: 'Brownie Decadence',
+  },
+  {
+    name: 'Blueberry Lemon Bars',
+  },
+  {
+    name: 'Raspberry Lemon Bars',
+    fileName: 'Raspberry Lemon Bar',
+  },
+  {
+    name: 'PB Brownies',
   },
 ];

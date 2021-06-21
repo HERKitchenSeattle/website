@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
@@ -6,13 +6,12 @@ import { Meta, Title } from '@angular/platform-browser';
   templateUrl: './page-not-found.component.html',
   styleUrls: ['./page-not-found.component.scss'],
 })
-export class PageNotFoundComponent implements OnInit {
+export class PageNotFoundComponent {
   constructor(private titleService: Title, private meta: Meta) {
     this.titleService.setTitle(`Page not found - HER Kitchen Seattle}`);
     this.meta.updateTag({ name: 'robots', content: 'noindex' });
   }
-  // @ts-ignore
-  @ViewChild('panel', { read: ElementRef }) public panel: ElementRef<any>;
+  @ViewChild('panel', { read: ElementRef }) public panel!: ElementRef<any>;
   scrollToTop() {
     this.panel.nativeElement.scrollIntoView({
       behavior: 'smooth',
@@ -20,5 +19,4 @@ export class PageNotFoundComponent implements OnInit {
       inline: 'start',
     });
   }
-  ngOnInit(): void {}
 }

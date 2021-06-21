@@ -5,6 +5,7 @@
       mat-button
       color="accent"
       routerLink="/{{ page.toLowerCase() }}"
+      (click)="scrollToTop()"
     >
       {{ page }}
     </button>

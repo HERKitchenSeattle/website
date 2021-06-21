@@ -2,42 +2,37 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-
-    <script>
+    <meta property="og:title" content="HER Kitchen" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="https://herkitchenseattle.com/assets/images/icon.png"
+    />
+    <meta
+      property="og:url"
+      content="https://herkitchenseattle.com/?utm_source=ogp&utm_medium=website&utm_campaign=2021-ogp"
+    />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@herkitchenwa" />
+    <meta name="twitter:creator" contetn="@herkitchenwa" />
+    <script defer>
+      // IE DETECTION.
+      // From 'https://next-material.balmjs.com/#/guide/kill-ie'
       if (window) {
+        var browser = (function (agent) {
+          switch (true) {
+            case agent.indexOf('edge') > -1:
+              return true;
+
+            default:
+              return false;
+          }
+        })(window.navigator.userAgent.toLowerCase());
         function detectIE() {
-          const ua = window.navigator.userAgent;
-
-          // Test values; Uncomment to check result …
-
-          // IE 10
-          // ua = 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)';
-
-          // IE 11
-          // ua = 'Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko';
-
-          // Edge 12 (Spartan)
-          // ua = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36 Edge/12.0';
-
-          // Edge 13
-          // ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586';
-
-          // NOTE: 2014
-          // const msie = ua.indexOf('MSIE ');
-          // if (msie > 0) {
-          //   // IE 10 or older => return version number
-          //   return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
-          // }
-
-          // const trident = ua.indexOf('Trident/');
-          // if (trident > 0) {
-          //   // IE 11 => return version number
-          //   const rv = ua.indexOf('rv:');
-          //   return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
-          // }
-
+          var ua = window.navigator.userAgent;
           // NOTE: 2019
-          const ie = /\b(MSIE |Trident.*?rv:)(\d+)/.exec(ua);
+          var ie = /\b(MSIE |Trident.*?rv:)(\d+)/.exec(ua);
           if (ie) {
             return parseInt(ie[2], 10);
           }
@@ -51,8 +46,27 @@
           // Other browser
           return false;
         }
-        if (detectIE()) {
-          document.getElementById('epic-main').style.display = 'none';
+        var IE = detectIE();
+        var oldEdge = browser;
+        var isIE = IE && IE <= 11;
+        function killIE() {
+          var body = document.getElementsByTagName('body')[0];
+          var template =
+            '<div class="kill-ie"><h1>Your browser is out-of-date. Please <a href="https://browsehappy.com/">download</a> one of the up-to-date, free and excellent browsers for better security, speed and comfort.</h1><p>Recommended Choice：<a href="https://www.google.com/chrome/">Chrome</a></p></div>';
+          body.innerHTML = template;
+        }
+        function forEachElement(selector, fn) {
+          var elements = document.querySelectorAll(selector);
+          for (var i = 0; i < elements.length; i++) fn(elements[i], i);
+        }
+
+        if (isIE || oldEdge) {
+          window.addEventListener('DOMContentLoaded', function (event) {
+            forEachElement('body', function (el, i) {
+              el.innerHTML =
+                '<div class="kill-ie"><h1>This website will not work becasue your browser is out-of-date. Please <a href="https://browsehappy.com/">download</a> one of the up-to-date, free and excellent browsers for better security, speed and comfort.</h1><p>Recommended Choice：<a href="https://www.google.com/chrome/">Chrome</a></p></div>';
+            });
+          });
         }
       }
     </script>
@@ -65,184 +79,43 @@
           j = d.createElement(s),
           dl = l != 'dataLayer' ? '&l=' + l : '';
         j.async = true;
+
         j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
         f.parentNode.insertBefore(j, f);
       })(window, document, 'script', 'dataLayer', 'GTM-MV8THZX');
     </script>
     <!-- End Google Tag Manager -->
-
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap"
-      rel="stylesheet"
-    />
-    <title>HER Kitchen Seattle</title>
+    <title>HER Kitchen</title>
     <base href="/" />
-    <meta name="robots" content="index" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <link rel="icon" type="image/x-icon" href="assets/images/s-icon.png" />
+    <link rel="icon" type="image/x-icon" href="/assets/images/s-icon.png" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="assets/roboto.css" rel="stylesheet" />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="preload"
-      as="style"
-    />
-    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="robots" content="index" />
     <meta name="theme-color" content="#ffeb3b" />
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <meta
       name="keywords"
       content="vegan, gluten, free, bakery, seattle, washington, redmond, kirkland, her, kitchen"
     />
+    <meta name="language" content="EN" />
     <meta
       name="description"
       content="A vegan and gluten free bakery based in Seattle, Washington."
     />
-    <meta name="language" content="EN" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons&display=block"
+      rel="stylesheet"
+    />
     <meta
       name="google-site-verification"
       content="flNlOa5uIDtkgtYMmCPp8-UJ_IQ4V7GV1I7Y7lhMLyE"
     />
-
     <link rel="apple-touch-icon" href="/assets/images/s-icon.png" />
-    <link
-      rel="apple-touch-startup-image"
-      href="assets/icons/apple-splash-2048-2732.jpg"
-      media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
-    />
-    <link
-      rel="apple-touch-startup-image"
-      href="assets/icons/apple-splash-2732-2048.jpg"
-      media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
-    />
-    <link
-      rel="apple-touch-startup-image"
-      href="assets/icons/apple-splash-1668-2388.jpg"
-      media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
-    />
-    <link
-      rel="apple-touch-startup-image"
-      href="assets/icons/apple-splash-2388-1668.jpg"
-      media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
-    />
-    <link
-      rel="apple-touch-startup-image"
-      href="assets/icons/apple-splash-1536-2048.jpg"
-      media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
-    />
-    <link
-      rel="apple-touch-startup-image"
-      href="assets/icons/apple-splash-2048-1536.jpg"
-      media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
-    />
-    <link
-      rel="apple-touch-startup-image"
-      href="assets/icons/apple-splash-1668-2224.jpg"
-      media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
-    />
-    <link
-      rel="apple-touch-startup-image"
-      href="assets/icons/apple-splash-2224-1668.jpg"
-      media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
-    />
-    <link
-      rel="apple-touch-startup-image"
-      href="assets/icons/apple-splash-1620-2160.jpg"
-      media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
-    />
-    <link
-      rel="apple-touch-startup-image"
-      href="assets/icons/apple-splash-2160-1620.jpg"
-      media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
-    />
-    <link
-      rel="apple-touch-startup-image"
-      href="assets/icons/apple-splash-1284-2778.jpg"
-      media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
-    />
-    <link
-      rel="apple-touch-startup-image"
-      href="assets/icons/apple-splash-2778-1284.jpg"
-      media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"
-    />
-    <link
-      rel="apple-touch-startup-image"
-      href="assets/icons/apple-splash-1170-2532.jpg"
-      media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
-    />
-    <link
-      rel="apple-touch-startup-image"
-      href="assets/icons/apple-splash-2532-1170.jpg"
-      media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"
-    />
-    <link
-      rel="apple-touch-startup-image"
-      href="assets/icons/apple-splash-1125-2436.jpg"
-      media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
-    />
-    <link
-      rel="apple-touch-startup-image"
-      href="assets/icons/apple-splash-2436-1125.jpg"
-      media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"
-    />
-    <link
-      rel="apple-touch-startup-image"
-      href="assets/icons/apple-splash-1242-2688.jpg"
-      media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
-    />
-    <link
-      rel="apple-touch-startup-image"
-      href="assets/icons/apple-splash-2688-1242.jpg"
-      media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"
-    />
-    <link
-      rel="apple-touch-startup-image"
-      href="assets/icons/apple-splash-828-1792.jpg"
-      media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
-    />
-    <link
-      rel="apple-touch-startup-image"
-      href="assets/icons/apple-splash-1792-828.jpg"
-      media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
-    />
-    <link
-      rel="apple-touch-startup-image"
-      href="assets/icons/apple-splash-1242-2208.jpg"
-      media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
-    />
-    <link
-      rel="apple-touch-startup-image"
-      href="assets/icons/apple-splash-2208-1242.jpg"
-      media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"
-    />
-    <link
-      rel="apple-touch-startup-image"
-      href="assets/icons/apple-splash-750-1334.jpg"
-      media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
-    />
-    <link
-      rel="apple-touch-startup-image"
-      href="assets/icons/apple-splash-1334-750.jpg"
-      media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
-    />
-    <link
-      rel="apple-touch-startup-image"
-      href="assets/icons/apple-splash-640-1136.jpg"
-      media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
-    />
-    <link
-      rel="apple-touch-startup-image"
-      href="assets/icons/apple-splash-1136-640.jpg"
-      media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
-    />
-
-    <link
-      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600&display=swap"
-      rel="stylesheet"
-    />
   </head>
-  <body class="mat-typography mat-app-background docs-app-background">
+  <body class="mat-typography mat-app-background">
     <!-- Google Tag Manager (noscript) -->
     <noscript
       ><iframe
@@ -253,10 +126,32 @@
       ></iframe
     ></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <section id="epic-main">
-      <her-kitchen>HER Kitchen Seattle</her-kitchen>
-    </section>
-
-    <noscript>A Vegan and gluten free bakery based in Washington</noscript>
+    <script>
+      window.fbAsyncInit = function () {
+        FB.init({
+          appId: '336939454484319',
+          autoLogAppEvents: true,
+          xfbml: true,
+          version: 'v11.0',
+        });
+      };
+    </script>
+    <script
+      async
+      defer
+      crossorigin="anonymous"
+      src="https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js"
+    ></script>
+    <app-root>HER Kitchen</app-root>
+    <script>
+      window.addEventListener('load', () => {
+        window.scrollTo(0, 1);
+      });
+    </script>
+    <script
+      src="https://ajax.cloudflare.com/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js"
+      data-cf-settings="0cfdc88ce2b7610d4d18f4a3-|49"
+      defer=""
+    ></script>
   </body>
 </html>

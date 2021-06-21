@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { MatDialog } from '@angular/material/dialog';
-
 import { first } from 'rxjs/operators';
 import { DialogComponent } from './dialog/dialog.component';
-
-interface Pages {
-  name: string;
-  tooltip: string;
-}
-
+import { pages } from './pages';
+import { MDCRipple } from '@material/ripple';
+import { ViewportScroller } from '@angular/common';
 @Component({
-  selector: 'her-navbar',
+  selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  constructor(public dialog: MatDialog, private auth: AngularFireAuth) {
+  constructor(
+    public dialog: MatDialog,
+    private auth: AngularFireAuth,
+    private viewportScroller: ViewportScroller
+  ) {
     if (this.auth.authState.pipe(first()).toPromise()) {
       this.signedIn = true;
     }
@@ -26,16 +26,8 @@ export class NavbarComponent implements OnInit {
   }
   signedIn: boolean = false;
   openDialog() {
-    // const dialogRef = this.dialog.open(NavbarDialog);
-
-    // dialogRef.afterClosed().subscribe((result) => {
-    //   console.log(`Dialog result: ${result}`);
-    // });
     this.dialog.open(DialogComponent);
   }
-  link = 'https://herkitchenseattle.web.app';
-  window = document.defaultView;
-  loading = true;
   share() {
     if (navigator.share) {
       navigator
@@ -52,26 +44,34 @@ export class NavbarComponent implements OnInit {
         });
     }
   }
-  pages: Array<Pages> = [
-    {
-      name: 'About',
-      tooltip: 'About us',
-    },
-    {
-      name: 'Menu',
-      tooltip: 'HER Kitchen Menu',
-    },
-    {
-      name: 'Events',
-      tooltip: 'Where to find us',
-    },
-    {
-      name: 'Contact',
-      tooltip: 'Contact us',
-    },
-  ];
+  pages = pages;
+  debounce(fn: Function) {
+    let frame: any;
 
+    return (...params: any[]) => {
+      if (frame) {
+        cancelAnimationFrame(frame);
+      }
+      frame = requestAnimationFrame(() => {
+        fn(...params);
+      });
+    };
+  }
+  scrollToTop() {
+    // window.scrollTo({ top: 0, behavior: 'smooth' });
+    this.viewportScroller.scrollToPosition([0, 0]);
+  }
+  storeScroll() {
+    document.body.dataset.scroll = window.scrollY.toString();
+  }
   async ngOnInit() {
+    document.querySelectorAll('.navbar-link > span').forEach((el) => {
+      MDCRipple.attachTo(el);
+    });
+    document.addEventListener('scroll', this.debounce(this.storeScroll), {
+      passive: true,
+    });
+    this.storeScroll();
     const user = await this.isLoggedIn();
     if (user) {
       this.signedIn = true;
@@ -81,8 +81,9 @@ export class NavbarComponent implements OnInit {
       document.getElementById('profile-stuff')!.style.display = 'none';
     }
     this.auth.onAuthStateChanged(
-      (user) => {
-        if (user) {
+      async (user) => {
+        const alsoUser = await this.isLoggedIn();
+        if (user && alsoUser) {
           this.signedIn = true;
           document.getElementById('profile-stuff')!.style.display = 'block';
         } else {

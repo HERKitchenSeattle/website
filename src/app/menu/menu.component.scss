@@ -1,7 +1,8 @@
+@use '../../card-animation';
 .menu-grid {
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
 mat-list {
@@ -19,12 +20,15 @@ a[mat-list-item] {
   margin: 0 -16px 16px -16px;
   height: auto;
 }
-mat-card {
-  display: grid;
-  place-items: center;
-}
+
 main {
   padding-bottom: 25px;
+  margin-top: 25px;
+  text-align: center;
+  align-items: center;
+  $padding: 10vh;
+  padding-left: $padding;
+  padding-right: $padding;
 }
 
 img {
@@ -34,14 +38,6 @@ img {
   height: 200px;
 }
 
-main {
-  margin-top: 25px;
-  text-align: center;
-  align-items: center;
-  $padding: 100px;
-  padding-left: $padding;
-  padding-right: $padding;
-}
 @media only screen and (max-width: 841px) {
   main {
     padding-left: 50px;
@@ -61,23 +57,6 @@ main {
   }
 }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0%;
-  }
-  100% {
-    opacity: 100%;
-  }
-}
-@-webkit-keyframes fadeIn {
-  0% {
-    opacity: 0%;
-  }
-  100% {
-    opacity: 100%;
-  }
-}
-
 h2 {
   line-height: 1.6;
 }
@@ -93,7 +72,6 @@ mat-expansion-panel {
   margin-left: 8px;
 }
 a {
-  color: #fff;
   font-size: 16px;
   margin-top: 6px;
   margin-bottom: 6px;

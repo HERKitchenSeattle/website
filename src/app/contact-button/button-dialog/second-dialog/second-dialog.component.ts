@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { messageId } from '../litterallyJustTheMessageId';
 
 @Component({
@@ -6,8 +6,7 @@ import { messageId } from '../litterallyJustTheMessageId';
   templateUrl: './second-dialog.component.html',
   styleUrls: ['./second-dialog.component.scss'],
 })
-export class SecondDialogComponent implements OnInit {
+export class SecondDialogComponent {
   constructor() {}
   messageID = messageId;
-  ngOnInit(): void {}
 }

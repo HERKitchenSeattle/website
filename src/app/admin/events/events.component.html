@@ -17,7 +17,10 @@
         class="description-form"
       />
     </mat-form-field>
-
+    <mat-form-field class="example-full-width">
+      <mat-label>Info Link</mat-label>
+      <input matInput [(ngModel)]="infoLink" name="info" class="info-form" />
+    </mat-form-field>
     <mat-form-field class="example-full-width">
       <mat-label>Location</mat-label>
       <input
@@ -106,7 +109,6 @@
     <mat-form-field class="example-full-width">
       <mat-label>Change this property</mat-label>
       <input
-        [formControl]="myControl"
         [matAutocomplete]="auto"
         matInput
         name="key"

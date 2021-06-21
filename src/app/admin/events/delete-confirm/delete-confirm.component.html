@@ -2,7 +2,11 @@
 <div mat-dialog-content>This action is irreversible.</div>
 <div mat-dialog-actions>
   <button mat-flat-button color="accent" mat-dialog-close>Close</button>
-  <button mat-button mat-dialog-close (click)="actuallyDeleteTheEvent()">
+  <button
+    mat-button
+    mat-dialog-close
+    (click)="actuallyDeleteTheEvent($any(data).id)"
+  >
     Delete
   </button>
 </div>

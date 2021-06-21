@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="assets/images/s-icon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <title>Assets</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body class="mdc-typography mdc-ripple-surface mdc-ripple-surface--primary">
+    <h1 class="mdc-typography--headline4">Assets</h1>
+    <div class="mdc-touch-target-wrapper">
+      <button
+        class="mdc-button mdc-button--touch mdc-button--raised"
+        onclick="javascript:window.location.href = '/'"
+      >
+        <span class="mdc-button__ripple"></span>
+        <span class="mdc-button__label">Back to Home</span>
+        <span class="mdc-button__touch"></span>
+      </button>
+    </div>
+
+    <p>
+      Product images are stored in assets/images/(product catagory)/(product
+      name).jpg
+      <br />
+      For example: Orange shortbread cookies will be in
+      <a href="/assets/images/shortbreadCookies/Orange.jpg">
+        assets/images/shortbreadCookies/Orange.jpg
+      </a>
+    </p>
+    <script src="/assets/script.js"></script>
+  </body>
+</html>

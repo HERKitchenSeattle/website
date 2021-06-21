@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { AboutComponent } from './about/about.component';
-import { ContactComponent } from './contact/contact.component';
+import { AboutSiteComponent } from './pages/about-site/about-site.component';
+import { AboutComponent } from './pages/about/about.component';
+import { BrandingComponent } from './pages/branding/branding.component';
+import { ChangelogComponent } from './changelog/changelog.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { FacebookComponent } from './pages/facebook/facebook.component';
 import { HomeComponent } from './home/home.component';
-
+import { InstagramComponent } from './pages/instagram/instagram.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { FacebookComponent } from './facebook/facebook.component';
-import { InstagramComponent } from './instagram/instagram.component';
-import { EventsComponent } from './events/events.component';
+import { TwitterComponent } from './pages/twitter/twitter.component';
 
 const routes: Routes = [
   {
@@ -27,13 +29,19 @@ const routes: Routes = [
     path: 'about',
     component: AboutComponent,
   },
-
+  {
+    path: 'about-site',
+    component: AboutSiteComponent,
+  },
   {
     path: 'locations',
     redirectTo: 'events',
     pathMatch: 'full',
   },
-
+  {
+    path: 'branding',
+    component: BrandingComponent,
+  },
   {
     path: 'facebook',
     component: FacebookComponent,
@@ -43,18 +51,26 @@ const routes: Routes = [
     component: InstagramComponent,
   },
   {
-    path: 'menu',
-    loadChildren: () => import('./menu/menu.module').then((m) => m.MenuModule),
+    path: 'twitter',
+    component: TwitterComponent,
   },
   {
-    path: 'events',
-    loadChildren: () =>
-      import('./events/events.module').then((m) => m.EventsModule),
+    path: 'changelog',
+    component: ChangelogComponent,
   },
   {
     path: 'admin',
     loadChildren: () =>
       import('./admin/admin.module').then((m) => m.AdminModule),
+  },
+  {
+    path: 'events',
+    loadChildren: () =>
+      import('./pages/events/events.module').then((m) => m.EventsModule),
+  },
+  {
+    path: 'menu',
+    loadChildren: () => import('./menu/menu.module').then((m) => m.MenuModule),
   },
   {
     path: '**',
@@ -66,7 +82,7 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, {
       preloadingStrategy: PreloadAllModules,
-      initialNavigation: 'enabled',
+      initialNavigation: 'enabledBlocking',
       anchorScrolling: 'enabled',
       onSameUrlNavigation: 'reload',
       useHash: true,

@@ -1,22 +1,24 @@
 import { ViewportScroller } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, VERSION } from '@angular/core';
+import { VERSION as fireVersion } from '@angular/fire';
+import epic from 'bootstrap/js/dist/base-component';
+import { VERSION as epicer } from '@angular/material/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss'],
 })
-export class FooterComponent implements OnInit {
-  darkMode = true;
+export class FooterComponent {
   constructor(private viewportScroller: ViewportScroller) {}
-  year = new Date().getFullYear();
+  year = new Date().getFullYear().toString();
   scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // window.scrollTo({ top: 0, behavior: 'smooth' });
+    this.viewportScroller.scrollToPosition([0, 0]);
   }
-  public onClick(elementId: string): void {
-    this.viewportScroller.scrollToAnchor(elementId);
-  }
-
-  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
-  ngOnInit(): void {}
+  ng_version = VERSION;
+  ng_material_version = epicer;
+  ng_fire_version = fireVersion;
+  bootstrap_version = epic.VERSION;
 }

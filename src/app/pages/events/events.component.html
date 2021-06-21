@@ -1,0 +1,153 @@
+<main>
+  <h1>Events</h1>
+  <h3>If you don't see any events, try refreshing the page.</h3>
+  <h3>Ordered by start date.</h3>
+  <h2>Current Events</h2>
+  <section
+    id="current events"
+    class="event-grid"
+    style="
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 10px;
+    "
+  >
+    <h3 *ngIf="(currentEvents | async)?.length === 0">No current events</h3>
+    <ng-container
+      class="kind-of-card"
+      *ngFor="let event of currentEvents | async"
+    >
+      <mat-card
+        *ngIf="timestampToMillis(event.endDate) >= currentDate.getTime()"
+      >
+        <mat-card-header>
+          <mat-card-title>{{ event.name }}</mat-card-title>
+          <mat-card-subtitle
+            >{{ event.location }}<br />
+            <a
+              href="https://www.google.com/maps/search/?api=1&query={{
+                encodeURIComponent($any(event).address)
+              }}"
+              target="_blank"
+              >{{ $any(event).address }}
+            </a>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <picture *ngIf="event.imageUrl">
+          <source srcset="/assets/events/{{event.name}}.jpg" />
+          <img src="{{ event.imageUrl }}" alt="{{ event.name }}" />
+        </picture>
+
+        <mat-card-content>
+          <h3>
+            {{ timestampToDate(event.startDate) }} to
+            {{ timestampToDate(event.endDate) }}
+          </h3>
+          <h3>{{ $any(event).otherTimeStuff }}</h3>
+          <p *ngIf="event.description">
+            {{ event.description }}
+          </p>
+          <h3 *ngIf="$any(event).infoLink">
+            <a href="{{ $any(event).infoLink }}" target="_blank">More Info</a>
+          </h3>
+          <h6>ID: {{ event.id }}</h6>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+  </section>
+  <h2>Future Events</h2>
+  <h3 *ngIf="(futureEvents | async)?.length === 0">No future events</h3>
+  <section
+    id="future events"
+    class="event-grid"
+    style="
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 10px;
+    "
+  >
+    <mat-card *ngFor="let event of futureEvents | async">
+      <section>{{ clientFutureEvents.push(event) }}</section>
+      <mat-card-header>
+        <mat-card-title>{{ event.name }}</mat-card-title>
+        <mat-card-subtitle
+          >{{ event.location }}<br />
+          <a
+            href="https://www.google.com/maps/search/?api=1&query={{
+              encodeURIComponent($any(event).address)
+            }}"
+            target="_blank"
+            >{{ $any(event).address }}</a
+          >
+        </mat-card-subtitle>
+      </mat-card-header>
+      <img
+        *ngIf="event.imageUrl"
+        src="{{ event.imageUrl }}"
+        alt="{{ event.name }}"
+      />
+      <mat-card-content>
+        <h3>
+          {{ timestampToDate(event.startDate) }} to
+          {{ timestampToDate(event.endDate) }}
+        </h3>
+        <h3>{{ $any(event).otherTimeStuff }}</h3>
+        <p *ngIf="event.description">
+          {{ event.description }}
+        </p>
+        <h6>ID: {{ event.id }}</h6>
+      </mat-card-content>
+    </mat-card>
+  </section>
+  <h2>Past Events</h2>
+  <h3 *ngIf="(pastEvents | async)?.length === 0">No past events</h3>
+  <section
+    id="past events"
+    class="event-grid"
+    style="
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 10px;
+    "
+  >
+    <mat-card *ngFor="let event of pastEvents | async">
+      <mat-card-header>
+        <mat-card-title>{{ event.name }}</mat-card-title>
+        <mat-card-subtitle
+          >{{ event.location }}<br />
+          <a
+            href="https://www.google.com/maps/search/?api=1&query={{
+              encodeURIComponent($any(event).address)
+            }}"
+            target="_blank"
+            >{{ $any(event).address }}</a
+          >
+        </mat-card-subtitle>
+      </mat-card-header>
+      <img
+        *ngIf="event.imageUrl"
+        src="{{ event.imageUrl }}"
+        alt="{{ event.name }}"
+      />
+      <mat-card-content>
+        <h3>
+          {{ timestampToDate(event.startDate) }} to
+          {{ timestampToDate(event.endDate) }}
+        </h3>
+        <h3>{{ $any(event).otherTimeStuff }}</h3>
+        <p *ngIf="event.description">
+          {{ event.description }}
+        </p>
+        <h6>ID: {{ event.id }}</h6>
+      </mat-card-content>
+    </mat-card>
+  </section>
+
+  <!-- <h6>Angular Fire version: {{ ngFireVersion.full }}</h6> -->
+</main>

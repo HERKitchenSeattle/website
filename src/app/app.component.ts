@@ -1,32 +1,106 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, NavigationStart, Router } from '@angular/router';
-
-import { UpdateService } from './update.service';
+import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 
 @Component({
-  // eslint-disable-next-line @angular-eslint/component-selector
-  selector: 'her-kitchen',
+  selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
   title = 'HER Kitchen';
-  loading!: boolean;
-  constructor(private sw: UpdateService, router: Router) {
-    document.addEventListener('itemInserted', () => {}, false);
-    this.loading = false;
-    router.events.subscribe((event) => {
+  constructor(private router: Router) {
+    this.router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
         this.loading = true;
-      } else if (event instanceof NavigationEnd) {
-        this.loading = false;
+        Promise.all(
+          Array.from(document.images)
+            .filter((img) => !img.complete)
+            .map(
+              (img) =>
+                new Promise((resolve) => {
+                  img.onload = img.onerror = resolve;
+                })
+            )
+        ).then(() => {
+          this.loading = false;
+        });
+      }
+      if (event instanceof NavigationEnd) {
+        this.loading = true;
+        Promise.all(
+          Array.from(document.images)
+            .filter((img) => !img.complete)
+            .map(
+              (img) =>
+                new Promise((resolve) => {
+                  img.onload = img.onerror = resolve;
+                })
+            )
+        ).then(() => {
+          this.loading = false;
+        });
       }
     });
-    this.sw.checkForUpdates();
   }
-
+  loading: boolean = true;
   ngOnInit() {
-    if (typeof window !== undefined)
-      window.localStorage.setItem('xm', new Date().getTime().toString());
+    function detectKey(key: string, callback: Function) {
+      document.addEventListener('keydown', (event) => {
+        if (event.key.toLowerCase() == key) {
+          callback();
+          return true;
+        } else {
+          return false;
+        }
+      });
+    }
+    window.onload = () => {
+      Promise.all(
+        Array.from(document.images)
+          .filter((img) => !img.complete)
+          .map(
+            (img) =>
+              new Promise((resolve) => {
+                img.onload = img.onerror = resolve;
+              })
+          )
+      ).then(() => {
+        this.loading = false;
+      });
+    };
+    detectKey('c', () => {
+      (
+        detectKey('o', () => {
+          (
+            detectKey('o', () => {
+              (
+                detectKey('k', () => {
+                  (
+                    detectKey('i', () => {
+                      (
+                        detectKey('e', () => {
+                          console.log('test');
+                          return;
+                        }) as any
+                      ).then((res: boolean) => {
+                        document.removeAllListeners!();
+                      });
+                    }) as any
+                  ).then((res: boolean) => {
+                    document.removeAllListeners!();
+                  });
+                }) as any
+              ).then((res: boolean) => {
+                document.removeAllListeners!();
+              });
+            }) as any
+          ).then((res: boolean) => {
+            document.removeAllListeners!();
+          });
+        }) as any
+      ).then((res: boolean) => {
+        document.removeAllListeners!();
+      });
+    });
   }
 }

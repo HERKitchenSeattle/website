@@ -1,31 +1,20 @@
 main {
-  position: fixed !important;
-  bottom: 40px;
-  right: 40px;
+  position: fixed;
+  bottom: 5vh;
+  right: 5vh;
 }
-
-button[mat-fab] {
-  width: 70px !important;
-
-  height: 70px !important;
+button {
+  height: 8vh;
+  width: 8vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.icon-question {
-  font-size: 28px;
-}
-@media only screen and (max-width: 426px) {
-  main {
-    position: fixed !important;
-    bottom: 20px !important;
-    right: 20px !important;
-  }
-  button[mat-fab] {
-    width: 60px !important;
-    height: 60px !important;
-  }
-  .icon-question {
-    font-size: 24px;
-  }
-}
-.example-button-container {
-  display: none;
+mat-icon {
+  font-size: 200%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
