@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { messageId } from '../litterallyJustTheMessageId';
+import { MessageId } from '../litterallyJustTheMessageId';
 
 @Component({
   selector: 'app-second-dialog',
@@ -8,5 +8,5 @@ import { messageId } from '../litterallyJustTheMessageId';
 })
 export class SecondDialogComponent {
   constructor() {}
-  messageID = messageId;
+  messageID = new MessageId().getMessageId;
 }

@@ -13,14 +13,19 @@ platformBrowserDynamic()
   .bootstrapModule(AppModule)
   .catch((err: Error) => console.error(err));
 
-if (
-  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-    navigator.userAgent
-  )
-) {
-  document.body.classList.add('mobile');
-} else {
-  document.body.classList.add('desktop');
+function detectMobile(): void {
+  if (
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    )
+  ) {
+    if (typeof document !== undefined) document.body.classList.add('mobile');
+  } else {
+    if (typeof document !== undefined) document.body.classList.add('desktop');
+  }
 }
+detectMobile();
+window.onresize = () => detectMobile();
+
 // @ts-ignore
 // FB.CustomerChat.show(true);

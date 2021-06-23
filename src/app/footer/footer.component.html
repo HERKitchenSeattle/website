@@ -10,6 +10,21 @@
           HER Kitchen
         </h1>
         <h3>A vegan and gluten free bakery based in Seattle, Washington.</h3>
+
+        <div class="break"></div>
+        <h3>© {{ year }} HER Kitchen Seattle <br /></h3>
+        <div class="break"></div>
+        <h3>This website is open source.</h3>
+        <h3>
+          <a
+            href="https://github.com/HERKitchenSeattle/website"
+            target="_blank"
+            rel="noreferrer"
+            >View project on GitHub
+          </a>
+        </h3>
+
+        <div class="break"></div>
         <h3>
           <a
             (click)="scrollToTop()"
@@ -23,27 +38,6 @@
             >Scroll to Top</a
           >
         </h3>
-        <div class="break"></div>
-        <h4>© {{ year }} HER Kitchen Seattle <br /></h4>
-        <div class="break"></div>
-        <h3 style="margin-bottom: 5px">This website is open source.</h3>
-
-        <a
-          href="https://github.com/HERKitchenSeattle/website"
-          target="_blank"
-          rel="noreferrer"
-          >View project on GitHub
-        </a>
-        <div class="break" style="margin-bottom: 25px"></div>
-        <h6>
-          Bootstrap Version: {{ bootstrap_version }} Angular Version:
-          {{ ng_version.full }} AngularFire2 Version: {{ ng_fire_version.full }}
-        </h6>
-
-        <div class="break"></div>
-        <h6>
-          <a (click)="scrollToTop()" routerLink="/admin/login">Admin login</a>
-        </h6>
       </span>
     </div>
     <div>
@@ -94,5 +88,17 @@
       "
     >
     </span>
+  </div>
+  <mat-divider style="margin-bottom: 10px"></mat-divider>
+  <div style="display: block">
+    <!-- <div class="break"></div> -->
+    <h6>
+      <a (click)="scrollToTop()" routerLink="/admin/login">Admin login</a>
+    </h6>
+    <!-- <div class="break"></div> -->
+    <h6>
+      Bootstrap Version: {{ bootstrap_version }} Angular Version:
+      {{ ng_version.full }} AngularFire2 Version: {{ ng_fire_version.full }}
+    </h6>
   </div>
 </footer>

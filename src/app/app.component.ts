@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ViewportScroller } from '@angular/common';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -8,15 +10,21 @@ import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'HER Kitchen';
-  constructor(private router: Router) {
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+    private router: Router,
+    private viewportScroller: ViewportScroller
+  ) {
+    this.viewportScroller.setOffset([0, 100]);
+    this.viewportScroller.setHistoryScrollRestoration('manual');
     this.router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
         this.loading = true;
         Promise.all(
-          Array.from(document.images)
-            .filter((img) => !img.complete)
+          Array.from(this.document.images)
+            .filter((img: any) => !img.complete)
             .map(
-              (img) =>
+              (img: any) =>
                 new Promise((resolve) => {
                   img.onload = img.onerror = resolve;
                 })
@@ -28,10 +36,10 @@ export class AppComponent implements OnInit {
       if (event instanceof NavigationEnd) {
         this.loading = true;
         Promise.all(
-          Array.from(document.images)
-            .filter((img) => !img.complete)
+          Array.from(this.document.images)
+            .filter((img: any) => !img.complete)
             .map(
-              (img) =>
+              (img: any) =>
                 new Promise((resolve) => {
                   img.onload = img.onerror = resolve;
                 })
@@ -44,22 +52,12 @@ export class AppComponent implements OnInit {
   }
   loading: boolean = true;
   ngOnInit() {
-    function detectKey(key: string, callback: Function) {
-      document.addEventListener('keydown', (event) => {
-        if (event.key.toLowerCase() == key) {
-          callback();
-          return true;
-        } else {
-          return false;
-        }
-      });
-    }
     window.onload = () => {
       Promise.all(
-        Array.from(document.images)
-          .filter((img) => !img.complete)
+        Array.from(this.document.images)
+          .filter((img: any) => !img.complete)
           .map(
-            (img) =>
+            (img: any) =>
               new Promise((resolve) => {
                 img.onload = img.onerror = resolve;
               })
@@ -68,39 +66,32 @@ export class AppComponent implements OnInit {
         this.loading = false;
       });
     };
-    detectKey('c', () => {
-      (
-        detectKey('o', () => {
-          (
-            detectKey('o', () => {
-              (
-                detectKey('k', () => {
-                  (
-                    detectKey('i', () => {
-                      (
-                        detectKey('e', () => {
-                          console.log('test');
-                          return;
-                        }) as any
-                      ).then((res: boolean) => {
-                        document.removeAllListeners!();
-                      });
-                    }) as any
-                  ).then((res: boolean) => {
-                    document.removeAllListeners!();
-                  });
-                }) as any
-              ).then((res: boolean) => {
-                document.removeAllListeners!();
-              });
-            }) as any
-          ).then((res: boolean) => {
-            document.removeAllListeners!();
-          });
-        }) as any
-      ).then((res: boolean) => {
-        document.removeAllListeners!();
-      });
+    addEventListener('keydown', (e) => {
+      if (e.key.toLowerCase() === 'c') {
+        addEventListener('keydown', (e) => {
+          if (e.key.toLowerCase() === 'o') {
+            addEventListener('keydown', (e) => {
+              if (e.key.toLowerCase() === 'o') {
+                addEventListener('keydown', (e) => {
+                  if (e.key.toLowerCase() === 'k') {
+                    addEventListener('keydown', (e) => {
+                      if (e.key.toLowerCase() === 'i') {
+                        addEventListener('keydown', (e) => {
+                          if (e.key.toLowerCase() === 'e') {
+                            console.log('cooookie');
+                            // @ts-ignore
+                            window.removeAllListeners('keydown');
+                          }
+                        });
+                      }
+                    });
+                  }
+                });
+              }
+            });
+          }
+        });
+      }
     });
   }
 }

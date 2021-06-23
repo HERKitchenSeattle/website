@@ -3,7 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
-import { set } from './litterallyJustTheMessageId';
+import { MessageId } from './litterallyJustTheMessageId';
 import { SecondDialogComponent } from './second-dialog/second-dialog.component';
 
 @Component({
@@ -45,7 +45,7 @@ export class ButtonDialogComponent {
               .toString()
           );
 
-          set(docRef.id);
+          new MessageId(docRef.id).setMessageId();
           this.dialog.open(SecondDialogComponent);
         })
         .catch((err) => {

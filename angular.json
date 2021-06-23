@@ -1,5 +1,23 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "schematics": {
+    "@schematics/angular:component": {
+      "style": "scss",
+      "skipTests": true
+    },
+    "@schematics/angular:class": {
+      "skipTests": true
+    },
+    "@schematics/angular:directive": {
+      "skipTests": true
+    },
+    "@schematics/angular:pipe": {
+      "skipTests": true
+    },
+    "@schematics/angular:service": {
+      "skipTests": true
+    }
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -26,7 +44,13 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["src/favicon.ico", "src/assets", "src/404.html"],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets",
+              "src/404.html",
+              "src/robots.txt",
+              "src/sitemap.xml"
+            ],
             "styles": ["src/styles.scss"],
             "scripts": []
           },
@@ -53,7 +77,10 @@
               "outputHashing": "all",
               "buildOptimizer": true,
               "optimization": true,
-              "allowedCommonJsDependencies": ["bootstrap"],
+              "allowedCommonJsDependencies": [
+                "bootstrap",
+                "bootstrap/js/dist/base-component"
+              ],
               "sourceMap": true
             },
             "development": {

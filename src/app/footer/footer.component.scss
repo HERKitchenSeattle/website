@@ -23,11 +23,6 @@ footer {
   display: flex;
   align-items: center;
 }
-// a[href="https://herkitchenseattle.com/#/instagram"]
-// {
-//   margin-top: 25px;
-//   padding-top: 10px;
-// }
 
 .break {
   flex-basis: 100%;
@@ -40,6 +35,7 @@ footer {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
   text-align: start;
+  grid-template-areas: 'spacer info links socials spacer';
 }
 .back-to-top-btn {
   position: absolute;

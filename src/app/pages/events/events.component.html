@@ -3,17 +3,7 @@
   <h3>If you don't see any events, try refreshing the page.</h3>
   <h3>Ordered by start date.</h3>
   <h2>Current Events</h2>
-  <section
-    id="current events"
-    class="event-grid"
-    style="
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 10px;
-    "
-  >
+  <section id="current events" class="event-grid">
     <h3 *ngIf="(currentEvents | async)?.length === 0">No current events</h3>
     <ng-container
       class="kind-of-card"
@@ -59,17 +49,7 @@
   </section>
   <h2>Future Events</h2>
   <h3 *ngIf="(futureEvents | async)?.length === 0">No future events</h3>
-  <section
-    id="future events"
-    class="event-grid"
-    style="
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 10px;
-    "
-  >
+  <section id="future events" class="event-grid">
     <mat-card *ngFor="let event of futureEvents | async">
       <section>{{ clientFutureEvents.push(event) }}</section>
       <mat-card-header>
@@ -105,17 +85,7 @@
   </section>
   <h2>Past Events</h2>
   <h3 *ngIf="(pastEvents | async)?.length === 0">No past events</h3>
-  <section
-    id="past events"
-    class="event-grid"
-    style="
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 10px;
-    "
-  >
+  <section id="past events" class="event-grid">
     <mat-card *ngFor="let event of pastEvents | async">
       <mat-card-header>
         <mat-card-title>{{ event.name }}</mat-card-title>

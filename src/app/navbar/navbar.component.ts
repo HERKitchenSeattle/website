@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { MatDialog } from '@angular/material/dialog';
 import { first } from 'rxjs/operators';
@@ -6,6 +6,8 @@ import { DialogComponent } from './dialog/dialog.component';
 import { pages } from './pages';
 import { MDCRipple } from '@material/ripple';
 import { ViewportScroller } from '@angular/common';
+import { DOCUMENT } from '@angular/common';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -13,6 +15,8 @@ import { ViewportScroller } from '@angular/common';
 })
 export class NavbarComponent implements OnInit {
   constructor(
+    private router: Router,
+    @Inject(DOCUMENT) private document: Document,
     public dialog: MatDialog,
     private auth: AngularFireAuth,
     private viewportScroller: ViewportScroller
@@ -62,40 +66,55 @@ export class NavbarComponent implements OnInit {
     this.viewportScroller.scrollToPosition([0, 0]);
   }
   storeScroll() {
-    document.body.dataset.scroll = window.scrollY.toString();
+    if (typeof document !== undefined)
+      document.body.dataset.scroll = window.scrollY.toString();
   }
+  /**
+   * @param el The element to scroll into view
+   */
+  async scroll(el: string) {
+    // let id = document.getElementById(el);
+    // id?.scrollIntoView({ behavior: 'smooth' });
+    this.viewportScroller.scrollToAnchor(el);
+    // this.viewportScroller.scrollToPosition([
+    //   0,
+    //   this.viewportScroller.getScrollPosition()[1] + 80,
+    // ]
+  }
+  console = console;
   async ngOnInit() {
-    document.querySelectorAll('.navbar-link > span').forEach((el) => {
+    this.document.querySelectorAll('.navbar-link > span').forEach((el) => {
       MDCRipple.attachTo(el);
     });
-    document.addEventListener('scroll', this.debounce(this.storeScroll), {
+    this.document.addEventListener('scroll', this.debounce(this.storeScroll), {
       passive: true,
     });
     this.storeScroll();
     const user = await this.isLoggedIn();
     if (user) {
       this.signedIn = true;
-      document.getElementById('profile-stuff')!.style.display = 'block';
+      this.document.getElementById('profile-stuff')!.style.display = 'block';
     } else {
       this.signedIn = false;
-      document.getElementById('profile-stuff')!.style.display = 'none';
+      this.document.getElementById('profile-stuff')!.style.display = 'none';
     }
     this.auth.onAuthStateChanged(
       async (user) => {
         const alsoUser = await this.isLoggedIn();
         if (user && alsoUser) {
           this.signedIn = true;
-          document.getElementById('profile-stuff')!.style.display = 'block';
+          this.document.getElementById('profile-stuff')!.style.display =
+            'block';
         } else {
           this.signedIn = false;
-          document.getElementById('profile-stuff')!.style.display = 'none';
+          this.document.getElementById('profile-stuff')!.style.display = 'none';
         }
       },
       (err) => {
         this.signedIn = false;
         console.log(err);
 
-        document.getElementById('profile-stuff')!.style.display = 'none';
+        this.document.getElementById('profile-stuff')!.style.display = 'none';
       }
     );
   }

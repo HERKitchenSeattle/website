@@ -173,3 +173,20 @@ mat-drawer-content {
 .profile-button {
   font-size: 36px;
 }
+.skip-link {
+  margin: 0;
+  padding: 0;
+  width: 1px;
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+  height: 1px;
+  &:focus {
+    position: static;
+    clip: auto;
+    overflow: visible;
+    height: auto;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+  }
+}

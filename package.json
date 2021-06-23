@@ -10,7 +10,8 @@
     "serve": "yarn start",
     "test": "ng test",
     "s": "yarn serve",
-    "b": "yarn build"
+    "b": "yarn build",
+    "deploy": "yarn build && firebase deploy"
   },
   "private": true,
   "dependencies": {

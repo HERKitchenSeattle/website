@@ -33,7 +33,10 @@ img {
   gap: 3vh;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   justify-content: center;
-  align-items: center;
+  align-items: start;
+  mat-card {
+    align-self: start;
+  }
 }
 @media only screen and (max-width: 749px) {
   .event-grid {

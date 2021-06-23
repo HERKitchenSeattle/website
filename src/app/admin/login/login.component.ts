@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import firebase from 'firebase/app';
+import { DOCUMENT, Location } from '@angular/common';
 
 import { Title } from '@angular/platform-browser';
 import { first } from 'rxjs/operators';
@@ -19,15 +20,18 @@ export class LoginComponent implements OnInit {
   passwordVal!: string;
   constructor(
     public auth: AngularFireAuth,
+    @Inject(DOCUMENT) private document: Document,
     private activatedRoute: ActivatedRoute,
-    private titleService: Title
+    private titleService: Title,
+    private location: Location
   ) {
     if (typeof document !== undefined) {
       // document.getElementById('goToDash')!.style.display = 'none';
-      document.querySelectorAll('#goToDash').forEach((el) => {
-        //@ts-ignore
-        el.style.display = 'none';
-      });
+      this.document
+        .querySelectorAll<HTMLButtonElement>('#goToDash')
+        .forEach((el) => {
+          el.style.display = 'none';
+        });
     }
   }
   email = new FormControl('', [Validators.required, Validators.email]);
@@ -85,17 +89,17 @@ export class LoginComponent implements OnInit {
     } else {
       this.message = '';
 
-      document.getElementById('goToDash')!.style.display = 'none';
+      this.document.getElementById('goToDash')!.style.display = 'none';
     }
     this.auth.onAuthStateChanged((user) => {
       if (!user) {
-        document.getElementById('goToDash')!.style.display = 'none';
-      } else if (user) {
-        window.location.href = '/#/admin';
+        this.document.getElementById('goToDash')!.style.display = 'none';
+      } else if (user && this.document.defaultView) {
+        this.document.defaultView.location.href = '/#/admin';
       }
     });
 
-    document.addEventListener('keydown', (e) => {
+    this.document.addEventListener('keydown', (e) => {
       if (e.key == 'Enter') {
         e.preventDefault();
         let email = this.emailVal;
@@ -146,17 +150,18 @@ export class LoginComponent implements OnInit {
         this.message = 'Signed in!';
         this.errCode = '';
 
-        document.getElementById('goToDash')!.style.display = 'inline-block';
+        this.document.getElementById('goToDash')!.style.display =
+          'inline-block';
 
-        document.getElementById('signInButton')!.style.display = 'none';
+        this.document.getElementById('signInButton')!.style.display = 'none';
         // this.router.navigateByUrl('console/dashboard');
       } else {
         return;
       }
     });
-    document
+    this.document
       .querySelectorAll('form.login')[0]
-      .addEventListener('submit', (event) => {
+      .addEventListener('submit', (event: Event) => {
         const trace = perf.trace('userLogin');
 
         trace.start();

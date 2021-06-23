@@ -9,7 +9,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { ContactButtonComponent } from './contact-button/contact-button.component';
 import { FacebookComponent } from './pages/facebook/facebook.component';
 import { FooterComponent } from './footer/footer.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './pages/home/home.component';
 import { InstagramComponent } from './pages/instagram/instagram.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -49,7 +49,7 @@ import { MatListModule } from '@angular/material/list';
 import { HttpClientModule } from '@angular/common/http';
 import { AboutSiteComponent } from './pages/about-site/about-site.component';
 import { TwitterComponent } from './pages/twitter/twitter.component';
-import { ChangelogComponent } from './changelog/changelog.component';
+import { ChangelogComponent } from './pages/changelog/changelog.component';
 
 @NgModule({
   declarations: [
