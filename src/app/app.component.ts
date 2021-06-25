@@ -1,19 +1,29 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
-import { Router, NavigationStart, NavigationEnd } from '@angular/router';
+// import { fader } from './route-animations';
+import {
+  Router,
+  NavigationStart,
+  NavigationEnd,
+  RouterOutlet,
+} from '@angular/router';
 import { DOCUMENT } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { CookieComponent } from './easter-eggs/cookie/cookie.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  // animations: [fader],
 })
 export class AppComponent implements OnInit {
   title = 'HER Kitchen';
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private router: Router,
-    private viewportScroller: ViewportScroller
+    private viewportScroller: ViewportScroller,
+    private dialog: MatDialog
   ) {
     this.viewportScroller.setOffset([0, 100]);
     this.viewportScroller.setHistoryScrollRestoration('manual');
@@ -50,6 +60,11 @@ export class AppComponent implements OnInit {
       }
     });
   }
+  prepareRoute(outlet: RouterOutlet) {
+    return (
+      outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation
+    );
+  }
   loading: boolean = true;
   ngOnInit() {
     window.onload = () => {
@@ -79,6 +94,7 @@ export class AppComponent implements OnInit {
                         addEventListener('keydown', (e) => {
                           if (e.key.toLowerCase() === 'e') {
                             console.log('cooookie');
+                            this.dialog.open(CookieComponent);
                             // @ts-ignore
                             window.removeAllListeners('keydown');
                           }

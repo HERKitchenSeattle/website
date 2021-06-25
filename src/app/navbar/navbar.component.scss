@@ -17,6 +17,11 @@ header {
   // 255, 235, 59
   background: #ffe925e6;
 }
+mat-toolbar.mat-toolbar {
+  display: grid;
+  align-content: center;
+  grid-template-columns: 1fr 1fr 1fr;
+}
 // #top {
 //   position: fixed;
 //   top: 0;
@@ -77,40 +82,31 @@ a.navbar-brand {
 .navbar-left-container {
   display: flex;
   align-items: center;
-  -webkit-box-flex: 1;
-  flex: 1 0 33%;
 }
 .navbar-middle-container {
   display: flex;
   align-items: center;
-  -webkit-box-align: center;
-  align-items: center;
-  -webkit-box-flex: 1;
-  flex: 1 0 33%;
+
   justify-content: center;
 }
 .navbar-right-container {
   display: flex;
-  -webkit-box-align: center;
-  -webkit-box-pack: end;
+
   justify-content: flex-end;
-  flex: 1 0 33%;
+
   align-items: center;
-  -webkit-box-flex: 1;
+
   [mat-icon-button] {
     $button-margin: 15px;
     margin-left: $button-margin;
     margin-right: $button-margin;
   }
 }
-.dark-mode-button {
-  display: flex;
-  align-items: center;
-  align-content: center;
-}
+
 .home-logo {
   align-items: center;
   justify-content: center;
+  height: 50px;
 }
 .mat-button-wrapper {
   display: flex;
@@ -123,11 +119,11 @@ a.navbar-brand {
 }
 .fb-logo {
   content: url('../../assets/facebook.svg');
-  height: 2.5em;
+  height: 2.2em;
 }
 .insta-logo {
   content: url('../../assets/insta.svg');
-  height: 2.55em;
+  height: 2.25em;
 }
 @media only screen and (max-width: 1444px) {
   .right-icons {

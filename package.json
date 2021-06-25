@@ -11,7 +11,9 @@
     "test": "ng test",
     "s": "yarn serve",
     "b": "yarn build",
-    "deploy": "yarn build && firebase deploy"
+    "git": "git add -A && git commit && git push",
+    "deploy": "yarn build && firebase deploy",
+    "deploy:git": "yarn git && yarn deploy"
   },
   "private": true,
   "dependencies": {

@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-cookie',
   templateUrl: './cookie.component.html',
-  styleUrls: ['./cookie.component.scss']
+  styleUrls: ['./cookie.component.scss'],
 })
-export class CookieComponent implements OnInit {
+export class CookieComponent {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  // ngOnInit(): void {}
 }

@@ -1,10 +1,11 @@
 <div id="top-of-page"></div>
 
 <app-navbar></app-navbar>
-<div id="main-content"></div>
+<div id="main-content" [@routeAnimations]="prepareRoute(outlet)">
+  <router-outlet #outlet="outlet"></router-outlet>
+</div>
 <!-- <div class="spinner-container">
   <mat-spinner *ngIf="loading" id="spinner" color="accent"></mat-spinner>
 </div> -->
-<router-outlet></router-outlet>
 <app-footer></app-footer>
 <!-- <app-contact-button></app-contact-button> -->

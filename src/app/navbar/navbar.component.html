@@ -9,187 +9,181 @@
     id="top"
     color="primary"
   >
-    <mat-toolbar-row class="left-align">
-      <div class="skip-link">
-        <a href="#main-content">Skip to main content</a>
-      </div>
-      <div class="navbar-left-container">
-        <div class="sidenav-toggle">
-          <button
-            mat-icon-button
-            aria-label="Navigation Menu"
-            (click)="openDialog()"
-          >
-            <mat-icon color="dark">menu</mat-icon>
-          </button>
-        </div>
-
-        <div class="page-links">
-          <button
-            mat-icon-button
-            color="secondary"
-            aria-label="Home"
-            matTooltip="Home Page"
-            routerLink="/"
-          >
-            <mat-icon color="dark">home</mat-icon>
-          </button>
-          <a
-            class="navbar-link"
-            routerLinkActive="nav-link-active"
-            color="secondary"
-            attr.aria-label="About us"
-            matTooltip="About us"
-            routerLink="/about"
-            (click)="scrollToTop()"
-          >
-            About
-          </a>
-          <a
-            class="navbar-link"
-            routerLinkActive="nav-link-active"
-            color="secondary"
-            attr.aria-label="HER Kitchen Menu"
-            matTooltip="HER Kitchen Menu"
-            [matMenuTriggerFor]="menuMenu"
-            routerLink="/menu"
-            id="menu-button"
-            #menuMenuTrigger="matMenuTrigger"
-          >
-            Menu
-          </a>
-          <mat-menu #menuMenu>
-            <button mat-menu-item (click)="scroll('classic-cookie')">
-              Classic Cookies
-            </button>
-            <button mat-menu-item (click)="scroll('shortbread-cookie')">
-              Shortbread Cookies
-            </button>
-            <mat-divider></mat-divider>
-            <button mat-menu-item (click)="scroll('dessert-bars')">
-              Dessert Bars
-            </button>
-            <button mat-menu-item (click)="scroll('oat-bars')">Oat Bars</button>
-            <button mat-menu-item (click)="scroll('keto-bars')">
-              Keto Bars
-            </button>
-            <mat-divider></mat-divider>
-            <button mat-menu-item (click)="scroll('classic-cookie')">
-              Muffins
-            </button>
-          </mat-menu>
-          <a
-            #test
-            (load)="console.log(test)"
-            class="navbar-link"
-            routerLinkActive="nav-link-active"
-            color="secondary"
-            attr.aria-label="Where to find us"
-            matTooltip="Where to find us"
-            routerLink="/events"
-            (click)="scrollToTop()"
-          >
-            Events
-          </a>
-          <a
-            class="navbar-link"
-            routerLinkActive="nav-link-active"
-            color="secondary"
-            attr.aria-label="Contact us"
-            matTooltip="Contact us"
-            routerLink="/contact"
-            (click)="scrollToTop()"
-          >
-            Contact
-          </a>
-        </div>
-      </div>
-      <!-- <div class="toolbar-container"> -->
-      <!-- <div> -->
-      <div class="navbar-middle-container">
-        <a
-          class="navbar-brand home-logo"
-          color="secondary"
-          mat-button
-          routerLink="/"
-          aria-label="HER Kitchen"
-          mat-tooltip="HER Kitchen Home"
+    <div class="skip-link">
+      <a href="#main-content">Skip to main content</a>
+    </div>
+    <!-- <mat-toolbar-row class="left-align"> -->
+    <div class="navbar-left-container">
+      <div class="sidenav-toggle">
+        <button
+          mat-icon-button
+          aria-label="Navigation Menu"
+          (click)="openDialog()"
         >
-          <img
-            src="../../assets/images/s-icon.png"
-            alt="HER Kitchen Logo"
-            height="76"
-            width="76"
-            class="epic-logo-lol"
-          />
+          <mat-icon color="dark">menu</mat-icon>
+        </button>
+      </div>
+
+      <div class="page-links">
+        <button
+          mat-icon-button
+          color="secondary"
+          aria-label="Home"
+          matTooltip="Home Page"
+          routerLink="/"
+        >
+          <mat-icon color="dark">home</mat-icon>
+        </button>
+        <a
+          class="navbar-link"
+          routerLinkActive="nav-link-active"
+          color="secondary"
+          attr.aria-label="About us"
+          matTooltip="About us"
+          routerLink="/about"
+          (click)="scrollToTop()"
+        >
+          About
+        </a>
+        <a
+          class="navbar-link"
+          routerLinkActive="nav-link-active"
+          color="secondary"
+          attr.aria-label="HER Kitchen Menu"
+          matTooltip="HER Kitchen Menu"
+          [matMenuTriggerFor]="menuMenu"
+          routerLink="/menu"
+          id="menu-button"
+          #menuMenuTrigger="matMenuTrigger"
+        >
+          Menu
+        </a>
+        <mat-menu #menuMenu>
+          <button mat-menu-item (click)="scroll('classic-cookie')">
+            Classic Cookies
+          </button>
+          <button mat-menu-item (click)="scroll('shortbread-cookie')">
+            Shortbread Cookies
+          </button>
+          <mat-divider></mat-divider>
+          <button mat-menu-item (click)="scroll('dessert-bars')">
+            Dessert Bars
+          </button>
+          <button mat-menu-item (click)="scroll('oat-bars')">Oat Bars</button>
+          <button mat-menu-item (click)="scroll('keto-bars')">Keto Bars</button>
+          <mat-divider></mat-divider>
+          <button mat-menu-item (click)="scroll('classic-cookie')">
+            Muffins
+          </button>
+        </mat-menu>
+        <a
+          #test
+          (load)="console.log(test)"
+          class="navbar-link"
+          routerLinkActive="nav-link-active"
+          color="secondary"
+          attr.aria-label="Where to find us"
+          matTooltip="Where to find us"
+          routerLink="/events"
+          (click)="scrollToTop()"
+        >
+          Events
+        </a>
+        <a
+          class="navbar-link"
+          routerLinkActive="nav-link-active"
+          color="secondary"
+          attr.aria-label="Contact us"
+          matTooltip="Contact us"
+          routerLink="/contact"
+          (click)="scrollToTop()"
+        >
+          Contact
         </a>
       </div>
+    </div>
+    <!-- <div class="toolbar-container"> -->
+    <!-- <div> -->
+    <div class="navbar-middle-container">
+      <a
+        class="navbar-brand home-logo"
+        color="secondary"
+        mat-button
+        routerLink="/"
+        aria-label="HER Kitchen"
+        mat-tooltip="HER Kitchen Home"
+      >
+        <img
+          src="../../assets/images/s-icon.png"
+          alt="HER Kitchen Logo"
+          height="76"
+          width="76"
+          class="epic-logo-lol"
+        />
+      </a>
+    </div>
 
-      <div class="navbar-right-container">
-        <div class="right-icons">
-          <a
-            mat-icon-button
-            routerLink="/facebook"
-            target="_blank"
-            rel="noreferrer"
-            matTooltip="HER Kitchen Facebook"
-            aria-label="Our Facebook"
-          >
-            <i class="fb-logo"></i>
-          </a>
-          <a
-            mat-icon-button
-            routerLink="/instagram"
-            target="_blank"
-            rel="noreferrer"
-            matTooltip="HER Kitchen Instagram"
-            aria-label="Our Instagram"
-          >
-            <i class="insta-logo"></i>
-          </a>
-          <a mat-icon-button (click)="share()" matTooltip="Share this page">
-            <mat-icon color="dark">share</mat-icon>
-          </a>
-        </div>
-        <div class="right-dropdown">
-          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="More">
-            <mat-icon color="dark">more_vert</mat-icon>
-          </button>
-          <mat-menu #menu="matMenu">
-            <ng-template matMenuContent>
-              <button mat-menu-item routerLink="/facebook">Facebook</button>
-              <button mat-menu-item routerLink="/instagram">Instagram</button>
-              <button mat-menu-item (click)="share()">Share</button>
-            </ng-template>
-          </mat-menu>
-        </div>
-        <div id="profile-stuff" class="profile-stuff" style="display: none">
-          <button
-            mat-icon-button
-            [matMenuTriggerFor]="profileMenu"
-            aria-label="Profile"
-          >
-            <mat-icon id="account-circle" color="dark">account_circle</mat-icon>
-          </button>
-          <mat-menu #profileMenu="matMenu">
-            <ng-template matMenuContent>
-              <button mat-menu-item routerLink="/admin">Dashboard</button>
-              <button mat-menu-item routerLink="/admin/events">Events</button>
-              <button mat-menu-item routerLink="/admin/messages">
-                Messages
-              </button>
-              <mat-divider></mat-divider>
-              <button mat-menu-item routerLink="/admin/sign-out">
-                Sign Out
-              </button>
-            </ng-template>
-          </mat-menu>
-        </div>
+    <div class="navbar-right-container">
+      <div class="right-icons">
+        <a
+          mat-icon-button
+          routerLink="/facebook"
+          target="_blank"
+          rel="noreferrer"
+          matTooltip="HER Kitchen Facebook"
+          aria-label="Our Facebook"
+        >
+          <i class="fb-logo"></i>
+        </a>
+        <a
+          mat-icon-button
+          routerLink="/instagram"
+          target="_blank"
+          rel="noreferrer"
+          matTooltip="HER Kitchen Instagram"
+          aria-label="Our Instagram"
+        >
+          <i class="insta-logo"></i>
+        </a>
+        <a mat-icon-button (click)="share()" matTooltip="Share this page">
+          <mat-icon color="dark">share</mat-icon>
+        </a>
+      </div>
+      <div class="right-dropdown">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="More">
+          <mat-icon color="dark">more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <ng-template matMenuContent>
+            <button mat-menu-item routerLink="/facebook">Facebook</button>
+            <button mat-menu-item routerLink="/instagram">Instagram</button>
+            <button mat-menu-item (click)="share()">Share</button>
+          </ng-template>
+        </mat-menu>
+      </div>
+      <div id="profile-stuff" class="profile-stuff" style="display: none">
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="profileMenu"
+          aria-label="Profile"
+        >
+          <mat-icon id="account-circle" color="dark">account_circle</mat-icon>
+        </button>
+        <mat-menu #profileMenu="matMenu">
+          <ng-template matMenuContent>
+            <button mat-menu-item routerLink="/admin">Dashboard</button>
+            <button mat-menu-item routerLink="/admin/events">Events</button>
+            <button mat-menu-item routerLink="/admin/messages">Messages</button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item routerLink="/admin/sign-out">Sign Out</button>
+          </ng-template>
+        </mat-menu>
+      </div>
 
-        <!-- <button mat-button class="dark-mode-button" color="secondary">
+      <!-- <button mat-button class="dark-mode-button" color="secondary">
         Dark Mode
       </button> -->
-      </div>
-    </mat-toolbar-row>
+    </div>
+    <!-- </mat-toolbar-row> -->
   </mat-toolbar>
 </header>

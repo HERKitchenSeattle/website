@@ -143,13 +143,6 @@ export const oatBars: Product[] = [
   {
     name: 'Chocolate Chip',
   },
-  {
-    name: 'Coconut',
-    image: false,
-  },
-  {
-    name: 'Matcha',
-  },
 ];
 export const muffins: Product[] = [
   {
