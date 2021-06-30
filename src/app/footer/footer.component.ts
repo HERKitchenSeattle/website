@@ -24,11 +24,16 @@ export class FooterComponent {
   checkTheme(): void {
     if (!window.localStorage.getItem('theme')) {
       window.localStorage.setItem('theme', 'light');
+
       // this.darkMode = false;
     } else if (window.localStorage.getItem('theme') === 'light') {
       // this.darkMode = false;
     } else if (window.localStorage.getItem('theme') === 'dark') {
       // this.darkMode = true;
+      let el = document.createElement('link');
+      el.rel = 'stylesheet';
+      el.href = '/assets/mat-purple-green.css';
+      document.body.append(el);
     }
     // this.darkMode = !this.darkMode;
   }
