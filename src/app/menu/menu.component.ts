@@ -41,7 +41,9 @@ export class MenuComponent implements OnInit {
   oatBars = oatBars;
   muffins = muffins;
   dessertBars = dessertBars;
-
+  trackByItems(index: number, item: any): number {
+    return item.id;
+  }
   /**
    * @param el The element to scroll into view
    */

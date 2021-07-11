@@ -7,7 +7,7 @@ export class MessageId {
   public setMessageId() {
     this.messageId = this._id;
   }
-  public getMessageId() {
+  public get getMessageId() {
     return this.messageId;
   }
 }

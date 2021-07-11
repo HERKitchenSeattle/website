@@ -1,6 +1,8 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 // import { fader } from './route-animations';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 import {
   Router,
   NavigationStart,
@@ -23,8 +25,20 @@ export class AppComponent implements OnInit {
     @Inject(DOCUMENT) private document: Document,
     private router: Router,
     private viewportScroller: ViewportScroller,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private _snackbar: MatSnackBar
   ) {
+    if (typeof window !== undefined) {
+      if (!window.localStorage.getItem('acceptCookies')) {
+        let cookieSnackbar = this._snackbar.open(
+          'This site uses cookies',
+          'Accept'
+        );
+        cookieSnackbar.afterDismissed().subscribe(() => {
+          window.localStorage.setItem('acceptCookies', 'true');
+        });
+      }
+    }
     this.viewportScroller.setOffset([0, 100]);
     this.viewportScroller.setHistoryScrollRestoration('manual');
     this.router.events.forEach((event) => {

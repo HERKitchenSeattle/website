@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { AboutSiteComponent } from './pages/about-site/about-site.component';
 import { AboutComponent } from './pages/about/about.component';
 import { BrandingComponent } from './pages/branding/branding.component';
@@ -10,6 +10,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { InstagramComponent } from './pages/instagram/instagram.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TwitterComponent } from './pages/twitter/twitter.component';
+import { QuicklinkStrategy } from 'ngx-quicklink';
 
 const routes: Routes = [
   {
@@ -81,7 +82,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      preloadingStrategy: PreloadAllModules,
+      preloadingStrategy: QuicklinkStrategy,
       initialNavigation: 'enabledBlocking',
       anchorScrolling: 'enabled',
       onSameUrlNavigation: 'reload',

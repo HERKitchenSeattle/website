@@ -52,6 +52,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AboutSiteComponent } from './pages/about-site/about-site.component';
 import { TwitterComponent } from './pages/twitter/twitter.component';
 import { ChangelogComponent } from './pages/changelog/changelog.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { RouterModule } from '@angular/router';
+import { QuicklinkModule } from 'ngx-quicklink';
 
 @NgModule({
   declarations: [
@@ -79,6 +82,7 @@ import { ChangelogComponent } from './pages/changelog/changelog.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    QuicklinkModule,
     AngularFireModule.initializeApp(firebaseConfig),
     MatToolbarModule,
     MatIconModule,
@@ -97,7 +101,9 @@ import { ChangelogComponent } from './pages/changelog/changelog.component';
     MatProgressSpinnerModule,
     MatListModule,
     MatSlideToggleModule,
+    MatSnackBarModule,
     HttpClientModule,
+    RouterModule,
   ],
   providers: [
     PerformanceMonitoringService,

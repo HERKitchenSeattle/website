@@ -52,13 +52,15 @@
           attr.aria-label="HER Kitchen Menu"
           matTooltip="HER Kitchen Menu"
           [matMenuTriggerFor]="menuMenu"
-          routerLink="/menu"
+          href="javascript:void(0)"
           id="menu-button"
           #menuMenuTrigger="matMenuTrigger"
         >
           Menu
         </a>
         <mat-menu #menuMenu>
+          <button mat-menu-item (click)="goToMenu()">Full Menu</button>
+          <mat-divider></mat-divider>
           <button mat-menu-item (click)="scroll('classic-cookie')">
             Classic Cookies
           </button>
@@ -72,9 +74,7 @@
           <button mat-menu-item (click)="scroll('oat-bars')">Oat Bars</button>
           <button mat-menu-item (click)="scroll('keto-bars')">Keto Bars</button>
           <mat-divider></mat-divider>
-          <button mat-menu-item (click)="scroll('classic-cookie')">
-            Muffins
-          </button>
+          <button mat-menu-item (click)="scroll('muffins')">Muffins</button>
         </mat-menu>
         <a
           #test

@@ -39,7 +39,7 @@
       <mat-expansion-panel-header>
         <mat-panel-title>Misc.</mat-panel-title>
       </mat-expansion-panel-header>
-      <a (click)="scroll('classic-cookie')" mat-list-item>Muffins</a>
+      <a (click)="scroll('muffins')" mat-list-item>Muffins</a>
     </mat-expansion-panel>
   </mat-accordion>
   <br />
@@ -71,7 +71,7 @@ muffins
       class="menu-card"
       id="{{
         cookie.name.toLowerCase().replace(' ', '-').replace('\'', '')
-      }}-card"
+      }}-classic-cookie-card"
     >
       <mat-card>
         <mat-card-header>
@@ -90,7 +90,7 @@ muffins
             alt="{{ cookie.name }}"
             id="cookie {{
               cookie.name.toLowerCase().replace(' ', '-').replace('\'', '')
-            }}-cookie"
+            }}-classic-cookie-card"
             class="menu-image"
             height="200px"
           />
@@ -119,7 +119,7 @@ muffins
       class="menu-card"
       id="{{
         cookie.name.toLowerCase().replace(' ', '-').replace('\'', '')
-      }}-card"
+      }}-shortbread-cookie-card"
     >
       <mat-card class="material-menu-card">
         <mat-card-header>
@@ -158,7 +158,9 @@ muffins
     <div
       *ngFor="let bar of dessertBars; index as i"
       class="menu-card dessert-bar-card"
-      id="{{ bar.name.toLowerCase().replace(' ', '-').replace('\'', '') }}-card"
+      id="{{
+        bar.name.toLowerCase().replace(' ', '-').replace('\'', '')
+      }}-dessert-bar-card"
     >
       <mat-card style="width: 300px" class="material-menu-card">
         <mat-card-header>
@@ -204,7 +206,9 @@ muffins
     <div
       *ngFor="let bar of oatBars; index as i"
       class="menu-card oat-bar-card"
-      id="{{ bar.name.toLowerCase().replace(' ', '-').replace('\'', '') }}-card"
+      id="{{
+        bar.name.toLowerCase().replace(' ', '-').replace('\'', '')
+      }}-oat-bar-card"
     >
       <mat-card style="width: 300px" class="material-menu-card">
         <mat-card-header>
@@ -268,7 +272,7 @@ muffins
       </mat-card>
     </div>
   </section>
-  <div class="item-header" id="keto-bars">
+  <div class="item-header" id="muffins">
     <h2>Muffins</h2>
     <!-- <h3>
 
@@ -276,8 +280,8 @@ muffins
     <mat-divider></mat-divider>
   </div>
 
-  <section class="menu-grid keto-bar-grid">
-    <div class="menu-card" id="keto-bar-card">
+  <section class="menu-grid muffins-grid">
+    <div class="menu-card" id="muffins-card">
       <mat-card class="material-menu-card" style="width: 200px">
         <mat-card-header>
           <mat-card-title>Muffins</mat-card-title>

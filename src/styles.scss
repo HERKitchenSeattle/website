@@ -26,7 +26,9 @@ mat-card.mat-card {
   align-items: center !important;
   align-content: center !important;
 }
-
+body {
+  color: rgba(0, 0, 0, 0.87);
+}
 ::-webkit-scrollbar {
   width: 12px;
   background-color: #f5f5f555;
@@ -140,3 +142,8 @@ input:-webkit-autofill:active {
   width: 1px !important;
   white-space: nowrap !important; /* 3 */
 }
+// @media only screen and (max-width: 1200px) {
+//   body.desktop #carouselExampleIndicators {
+//     margin: 30px !important;
+//   }
+// }

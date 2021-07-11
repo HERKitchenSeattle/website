@@ -82,6 +82,11 @@ export class NavbarComponent implements OnInit {
     // ]
   }
   console = console;
+  goToMenu(): void {
+    if (typeof window !== undefined) {
+      window.location.href = '/#/menu';
+    }
+  }
   async ngOnInit() {
     this.document.querySelectorAll('.navbar-link > span').forEach((el) => {
       MDCRipple.attachTo(el);
